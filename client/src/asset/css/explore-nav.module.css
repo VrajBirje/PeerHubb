@@ -1,0 +1,209 @@
+.button-area {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 320px;
+    
+  }
+  .button{
+    background: #999;
+     padding: 1em 2.4em;
+     font-size: .9em;
+     margin: 1em;
+     color: white;
+     text-decoration: none;
+     flex-grow: 1;
+     text-align: center;
+   }
+
+
+body{
+    overflow-x: hidden;
+}
+.nav{
+
+    margin-top: 2%;
+    height: 4rem;
+    width: 100vw;
+     position: static;
+ 
+     background-color: #b8c6db;
+     background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+  
+    display: flex;
+    
+    z-index: 10;
+}
+
+
+.logo{
+    padding:1vh 1vw;
+    text-align: center;
+}
+.logo img {
+    height: 5rem;
+    width: 5rem;
+}
+
+.navlinks{
+    
+    display: flex;
+    list-style: none; 
+    width: 88vw;
+    padding: 0 0.7vw;
+    justify-content: space-evenly;
+    align-items: center;
+    text-transform: uppercase;
+    text-align: center;
+
+   
+}
+.navlinks li a{
+    text-decoration: none;
+    margin: 0 0.7vw;
+    color: black;
+}
+.navlinks li a:hover {
+    color: #070707;
+}
+.navlinks li {
+    margin-left: 5%;
+    min-height: 20%;
+    width: 20%;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+}
+.navlinks li a::before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 0%;
+    background-color: #050505;
+    position: absolute;
+    transition: all ease-in-out 250ms;
+    margin: 0 0 0 10%;
+}
+.navlinks li a:hover::before{
+    width: 80%;
+}
+
+
+.loginbutton{
+    background-color: transparent;
+    border: 1.5px solid #f2f5f7;
+    border-radius: 2em;
+    padding: 0.6rem 0.8rem;
+    margin-left: 2vw;
+    font-size: 1rem;
+    cursor: pointer;
+
+}
+.loginbutton:hover {
+    color: #131418;
+    background-color: #f2f5f7;
+    border:1.5px solid #f2f5f7;
+    transition: all ease-in-out 350ms;
+}
+.joinbutton{
+    color: #131418;
+    background-color: #61DAFB;
+    border: 1.5px solid #61DAFB;
+    border-radius: 2em;
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.joinbutton:hover {
+    color: #f2f5f7;
+    background-color: transparent;
+    border:1.5px solid #f2f5f7;
+    transition: all ease-in-out 350ms;
+}
+
+.hamburger div{
+    width: 30px;
+    height:3px;
+    background: #020202;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+.hamburger{
+    display: none;
+}
+
+@media screen and (max-width: 800px){
+    nav{
+        position: fixed;
+        z-index: 3;
+    }
+    .hamburger{
+        display:block;
+        position: absolute;
+        cursor: pointer;
+        right: 5%;
+        top: 50%;
+        transform: translate(-5%, -50%);
+        z-index: 2;
+        transition: all 0.7s ease;
+    }
+    .navlinks{
+        position: fixed;
+        background: #131418;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        clip-path: circle(50px at 90% -20%);
+        -webkit-clip-path: circle(50px at 90% -10%);
+        transition: all 1s ease-out;
+        pointer-events: none;
+    }
+    .navlinks.open{
+        clip-path: circle(1000px at 90% -10%);
+        -webkit-clip-path: circle(1000px at 90% -10%);
+        pointer-events: all;
+    }
+    .navlinks li{
+        opacity: 0;
+    }
+    .navlinks li:nth-child(1){
+        transition: all 0.5s ease 0.2s;
+    }
+    .navlinks li:nth-child(2){
+        transition: all 0.5s ease 0.4s;
+    }
+    .navlinks li:nth-child(3){
+        transition: all 0.5s ease 0.6s;
+    }
+    .navlinks li:nth-child(4){
+        transition: all 0.5s ease 0.7s;
+    }
+    .navlinks li:nth-child(5){
+        transition: all 0.5s ease 0.8s;
+    }
+    .navlinks li:nth-child(6){
+        transition: all 0.5s ease 0.9s;
+        margin: 0;
+    }
+    .navlinks li:nth-child(7){
+        transition: all 0.5s ease 1s;
+        margin: 0;
+    }
+    li.fade{
+        opacity: 1;
+    }
+}
+
+
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2{
+    transition: all 0.7s ease;
+    width:0;
+}
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px,-6px);
+}

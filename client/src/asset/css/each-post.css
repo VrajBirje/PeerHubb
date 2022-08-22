@@ -1,0 +1,357 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+  /* overflow: hidden; */
+  background-color: whitesmoke;
+}
+
+.container2 {
+  max-width: 100rem;
+  /* max-height: 100%; */
+  /* overflow: hidden; */
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.container .deco {
+  height: 3rem;
+  width: 23rem;
+  filter: brightness(120%);
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  width: 100%;
+}
+.cards-container {
+  padding: 2rem;
+}
+
+.card-box {
+  display: flex;
+  flex-flow: column;
+  width: 36.3rem;
+  background-color: white;
+  font-size: 0.92rem;
+  box-shadow: 0px 3px 4px gray;
+}
+
+.card-img {
+  height: 23rem;
+}
+
+.card-data,
+.card-title,
+.card-description {
+  padding: 0 1.5rem;
+}
+
+.card-data {
+  padding-top: 2rem;
+  padding-bottom: 1.3rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.card-data p {
+  display: inline-block;
+}
+
+.text-right {
+  margin-left: 9.4rem;
+  margin-right: 1rem;
+}
+
+.autor {
+  font-weight: bold;
+}
+
+.card-title {
+  display: block;
+  margin: 0;
+  margin-bottom: 1.3rem;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.card-title:hover {
+  background-color: rgb(205, 202, 202);
+}
+
+.card-description {
+  font-size: 1.15rem;
+  line-height: 1.7rem;
+  padding-bottom: 2rem;
+}
+
+@media all and (max-width: 1200px) {
+  .card-box {
+    width: 30rem;
+  }
+
+  .container {
+    padding: 1%;
+  }
+
+  .card-data {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .text-right {
+    margin: 0;
+  }
+
+  .card-img {
+    height: 20rem;
+  }
+}
+
+@media all and (max-width: 1000px) {
+  .flex-container {
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+  }
+
+  .card-box {
+    width: 100%;
+  }
+
+  .card-img {
+    height: 27rem;
+  }
+}
+
+@media all and (max-width: 550px) {
+  .card-img {
+    height: 20rem;
+  }
+
+  .data-text {
+    font-size: 0.85rem;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-description {
+    font-size: 1rem;
+  }
+}
+
+
+
+#fbcomment{
+  background:#fff;
+  border: 1px solid #dddfe2;
+  border-radius: 3px;
+  color: #4b4f56;
+  padding:50px;
+}
+.header_comment{
+    font-size: 14px;
+    overflow: hidden;
+    border-bottom: 1px solid #e9ebee;
+    line-height: 25px;
+    margin-bottom: 24px;
+    padding: 10px 0;
+}
+.sort_title{
+  color: #4b4f56;
+}
+.sort_by{
+  background-color: #f5f6f7;
+  color: #4b4f56;
+  line-height: 22px;
+  cursor: pointer;
+  vertical-align: top;
+  font-size: 12px;
+  font-weight: bold;
+  vertical-align: middle;
+  padding: 4px;
+  justify-content: center;
+  border-radius: 2px;
+  border: 1px solid #ccd0d5;
+}
+.count_comment{
+  font-weight: 600;
+}
+.body_comment{
+    padding: 0 8px;
+    font-size: 14px;
+    display: block;
+    line-height: 25px;
+    word-break: break-word;
+}
+.avatar_comment{
+  display: block;
+}
+.avatar_comment img{
+  height: 48px;
+  width: 48px;
+}
+.box_comment{
+	display: block;
+    position: relative;
+    line-height: 1.358;
+    word-break: break-word;
+    border: 1px solid #d3d6db;
+    word-wrap: break-word;
+    background: #fff;
+    box-sizing: border-box;
+    cursor: text;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+	padding: 0;
+}
+.box_comment textarea{
+	min-height: 40px;
+	padding: 12px 8px;
+	width: 100%;
+	border: none;
+	resize: none;
+}
+.box_comment textarea:focus{
+  outline: none !important;
+}
+.box_comment .box_post{
+	border-top: 1px solid #d3d6db;
+    background: #f5f6f7;
+    padding: 8px;
+    display: block;
+    overflow: hidden;
+}
+.box_comment label{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 11px;
+  color: #90949c;
+  line-height: 22px;
+}
+.box_comment button{
+  margin-left:8px;
+  background-color: #4267b2;
+  border: 1px solid #4267b2;
+  color: #fff;
+  text-decoration: none;
+  line-height: 22px;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+}
+.box_comment button:hover{
+  background-color: #29487d;
+  border-color: #29487d;
+}
+.box_comment .cancel{
+	margin-left:8px;
+	background-color: #f5f6f7;
+	color: #4b4f56;
+	text-decoration: none;
+	line-height: 22px;
+	border-radius: 2px;
+	font-size: 14px;
+	font-weight: bold;
+	position: relative;
+	text-align: center;
+  border-color: #ccd0d5;
+}
+.box_comment .cancel:hover{
+	background-color: #d0d0d0;
+	border-color: #ccd0d5;
+}
+.box_comment img{
+  height:16px;
+  width:16px;
+}
+.box_result{
+  margin-top: 24px;
+}
+.box_result .result_comment h4{
+  font-weight: 600;
+  white-space: nowrap;
+  color: #365899;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.358;
+  margin:0;
+}
+.box_result .result_comment{
+  display:block;
+  overflow:hidden;
+  padding: 0;
+}
+.child_replay{
+	border-left: 1px dotted #d3d6db;
+	margin-top: 12px;
+	list-style: none;
+	padding:0 0 0 8px
+}
+.reply_comment{
+	margin:12px 0;
+}
+.box_result .result_comment p{
+  margin: 4px 0;
+  text-align:justify;
+}
+.box_result .result_comment .tools_comment{
+  font-size: 12px;
+  line-height: 1.358;
+}
+.box_result .result_comment .tools_comment a{
+  color: #4267b2;
+  cursor: pointer;
+  text-decoration: none;
+}
+.box_result .result_comment .tools_comment span{
+  color: #90949c;
+}
+.body_comment .show_more{
+  background: #3578e5;
+  border: none;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 14px;
+  margin-top: 24px;
+  padding: 12px;
+  text-shadow: none;
+  width: 100%;
+  font-weight:bold;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+.solved{
+  background-color: #FF7F50;
+  border: none;
+  color: white;
+  padding: 2px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  height: 25px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-left: 5%;
+  width: 90%;
+
+}

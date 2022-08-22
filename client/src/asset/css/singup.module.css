@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+
+
+.container {
+  height: 100vh;
+ 
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  background-image :linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+  
+}
+.logincontainer{
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 400px;
+  height: 500px;
+  background-color: #ffffff;
+  padding: 10px 30px;
+  margin-top: 2%;
+  
+
+
+  background-image: linear-gradient(315deg, #aee1f9 0%, #f6ebe6 74%);
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 400px;
+  height: 800px;
+  background-color: #ffffff;
+  padding: 10px 30px;
+  margin-top: 2%;
+  
+
+
+  background-image: linear-gradient(315deg, #aee1f9 0%, #f6ebe6 74%);
+  
+  
+  
+}
+
+.card_title {
+  text-align: center;
+  padding: 6px;
+}
+
+.card_title h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+/* .form{
+  height :200vh;
+} */
+
+.form input {
+  margin: 10px 0;
+  width: 100%;
+  background-color: #c3c3c3;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+}
+
+.form button {
+  background-color: #4796ff;
+  color: #ffffff;
+  font-size: 16px;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 15px;
+  width: 100%;
+}
+
+.card_terms {
+/*   display: flex; */
+  align-items: center;
+  padding: 10px;
+  display:block;
+}
+
+.card_terms input[type="checkbox"] {
+  background-color: #e2e2e2;
+   display:block;
+  
+}
+
+.card_terms span {
+  margin: 5px;
+  font-size: 13px;
+/*    display:block; */
+}
+
+.card a {
+  color: #4796ff;
+  text-decoration: none;
+}
