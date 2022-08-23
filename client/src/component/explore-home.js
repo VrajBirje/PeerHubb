@@ -13,7 +13,7 @@ export function Explore() {
   const [vote, setVote] = useState(0);
   const callaboutPage = async () => {
     try {
-      const res = await fetch("/explore", {
+      const res = await fetch("http://18.237.56.192:6000/explore", {
         method: "GET",
       });
 
