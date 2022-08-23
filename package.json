@@ -4,9 +4,9 @@
   "description": "Doubt Solver Web Application",
   "main": "index.js",
   "scripts": {
-    "start": "node myindex.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "start": "nodemon myindex.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "author": "namit",
   "license": "ISC",

@@ -1,5 +1,5 @@
 const express= require('express');
-const port=process.env.PORT||6000;
+const port=6000;
 const app= express();
 var cookies = require("cookie-parser");
 var fileupload = require("express-fileupload");
@@ -60,6 +60,3 @@ app.listen(port,function(err){
 
 
 // deploye
-if(process.env.NODE_ENV=="production"){
-    app.use(express.static("client/build"))
-}
