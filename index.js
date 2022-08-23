@@ -1,5 +1,5 @@
 const express= require('express');
-const port=6000;
+const port=3000;
 const app= express();
 var cookies = require("cookie-parser");
 var fileupload = require("express-fileupload");
