@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const EachPost=(props)=>{
+  const[buttonIn,setbuttonIn]= useState(false);
   const [username,setUsername]= useState('');
   const [userid,setUserid]= useState("");
   const callPost= async()=>{
@@ -144,7 +145,7 @@ const EachPost=(props)=>{
 
      const Postcomment= async(e)=>{
       e.preventDefault();
-    
+      setbuttonIn(true);
       const {comment}= comment1;
       fromdata.append('img',selectedFiles);
       fromdata.append('hidden',hidden);
@@ -161,14 +162,17 @@ const EachPost=(props)=>{
         body: fromdata
         
       });
+      
       if(res.status===200){
         addToast("Comment Posted‼️",{
           appearances:true,
           autoDismiss:true
         });
+        setbuttonIn(false);
             history(`/explore`)
       }
       else{
+        setbuttonIn(false);
         addToast("Invalid Information",{
           appearances:false,
           autoDismiss:true
@@ -234,7 +238,7 @@ const EachPost=(props)=>{
                     />
                     <div className="box_post">
                       <div className="pull-right">
-                        <button onClick={Postcomment} type="button" value={1}>Post-comment</button>
+                        <button onClick={Postcomment} disabled={buttonIn} type="button" value={1}>{buttonIn? 'Please Wait..':'Post-Answer'}</button>
                       </div>
                     </div>
                   </div>

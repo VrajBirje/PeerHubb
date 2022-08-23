@@ -12,7 +12,8 @@ import { useToasts } from 'react-toast-notifications';
 
 
 export function CreatePost(){
- 
+
+  const[buttonIn,setbuttonIn]= useState(false);
   const {addToast}= useToasts();
   const [username,setUsername]= useState('');
   const history=useNavigate();
@@ -97,6 +98,8 @@ export function CreatePost(){
   }
 
   const CreatePost= async(e)=>{
+
+    setbuttonIn(true);
     e.preventDefault();
    const {heading,subject,fieldname,message}=user;
     fromdata.append('img',selectedFiles);
@@ -121,9 +124,11 @@ export function CreatePost(){
         appearances:true,
         autoDismiss:true
       });
+      setbuttonIn(false);
       history('/explore')
     }
     else{
+      setbuttonIn(false);
      return  addToast("Server Error ‼️",{
         appearances:false,
         autoDismiss:true
@@ -201,8 +206,8 @@ export function CreatePost(){
             <li>
               <div className="grid grid-3">
                
-                <button className="btn-grid" onClick={CreatePost} type="submit" >
-                    <span className="front">SUBMIT</span>
+                <button className="btn-grid" onClick={CreatePost} type="submit" disabled={buttonIn} >
+                    <span className="front">{buttonIn? 'Please Wait..':'Create'}</span>
                 </button>
                
               </div>

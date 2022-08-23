@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const Login=(props)=>{
 
-
+  const[loggingIn,setLoggingIn]= useState(false);
   const {addToast}= useToasts();
   const history=useNavigate();
   const [user,setUser]= useState({
@@ -28,6 +28,8 @@ export const Login=(props)=>{
   }
 
   const Postdata= async(e)=>{
+          
+           setLoggingIn(true);
           e.preventDefault();
         
           const {email,password}=user;
@@ -51,9 +53,11 @@ export const Login=(props)=>{
               autoDismiss:true
             });
             props.login(true);
+            setLoggingIn(false);
             history('/explore')
           }
           else{
+            setLoggingIn(false);
             addToast("Invalid Information ‼️",{
               appearances:false,
               autoDismiss:true
@@ -83,7 +87,9 @@ export const Login=(props)=>{
                   value={user.password}
                   onChange={handleInputs}
               />
-              <button onClick={Postdata}>Log-in</button>
+              <button onClick={Postdata} disabled={loggingIn}>
+              {loggingIn? 'Loging in..':'Log-in'}
+                </button>
               
             </form>
           </div>

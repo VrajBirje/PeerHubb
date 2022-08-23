@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import '../asset/css/rank.css';
+import Loading from "./loading";
 
 export const Rank=()=>{
 
-
+  const [loading,setLoading]= useState([true]); 
     const [user,setUser1]= useState([]);
     const call=async ()=>{
         const response= await fetch('/ranking',{
@@ -12,6 +13,7 @@ export const Rank=()=>{
 
         const data= await response.json();
         setUser1(data.message)
+        setLoading(false);
      
         
 
@@ -20,7 +22,9 @@ export const Rank=()=>{
       call();
     },[])
 
-    
+    if(loading){
+      return <Loading />
+    }
 
     return (
 

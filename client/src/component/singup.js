@@ -6,7 +6,8 @@ import { useToasts } from 'react-toast-notifications';
 import { useNavigate } from 'react-router-dom';
 
 export const Singup=()=>{
-   
+
+  const[buttonIn,setbuttonIn]= useState(false); 
   const [user,setUser]= useState({
     username:"",email:"",profession:"",university:"",enrolled:"",courseyr:"",password:""
   });
@@ -15,7 +16,7 @@ export const Singup=()=>{
 
   const handleInputs=(e)=>{
      
-  
+    
     name=e.target.name;
     value=e.target.value;
 
@@ -24,6 +25,7 @@ export const Singup=()=>{
   }
   const {addToast}= useToasts();
   const Postdata= async(e)=>{
+           setbuttonIn(true);
           e.preventDefault();
           
           const {username,email,profession,university,enrolled,courseyr,password}=user;
@@ -47,10 +49,12 @@ export const Singup=()=>{
               appearances:true,
               autoDismiss:true
             });
+            setbuttonIn(false);
             history('/login')
             
           }
           else{
+            setbuttonIn(false);
             return addToast("Invalid Information",{
               appearances:false,
               autoDismiss:true
@@ -102,7 +106,7 @@ export const Singup=()=>{
                   value={user.password}
                   onChange={handleInputs}
               />
-              <button onClick={Postdata}>Sign Up</button>
+              <button onClick={Postdata} disabled={buttonIn}>{buttonIn? 'Please Wait..':'Sing-up'}</button>
               {/* <div className={styles.card_terms}>
                 <input type="checkbox" name id="terms" /> <span>I have read and agree to the <a href>Terms of Service</a></span>
               </div> */}

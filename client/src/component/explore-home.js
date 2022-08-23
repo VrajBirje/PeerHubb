@@ -1,5 +1,5 @@
 import "../asset/css/explore-home.css";
-
+import Loading from "./loading";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
@@ -7,6 +7,7 @@ import styles from "../asset/css/explore-nav.module.css";
 
 
 export function Explore() {
+  const [loading,setLoading]= useState([true]); 
   const { addToast } = useToasts();
   const [posts, setPosts] = useState([]);
   const [vote, setVote] = useState(0);
@@ -18,14 +19,16 @@ export function Explore() {
 
       const data = await res.json();
       setPosts(data.message);
-
+       setLoading(false);
       if (!res.status === 200) {
         return addToast("Error Contact Admin ‼️", {
           appearances: false,
           autoDismiss: true,
         });
       }
-    } catch (e) {}
+    } catch (e) {
+    
+    }
   };
 
   const upvote = async () => {};
@@ -192,6 +195,9 @@ export function Explore() {
     
     
   };
+  if(loading){
+    return <Loading />
+  }
 
   return (
     <section>
