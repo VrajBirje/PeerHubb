@@ -32,8 +32,9 @@ router.get('/explore',Explore.Explore);
 router.post('/create-post',Authenticate,Create.CreatePost);
 
 // verification of user
-router.get('/verify-user',Authenticate,async (req,res)=>{
+router.post('/verify-user',Authenticate,async (req,res)=>{
      
+
    return res.status(200).json({message:req.rootUser});
 
 })
@@ -59,7 +60,7 @@ router.get('/ranking',ranking.rank);
 router.post('/upvote',Authenticate,voting.upvote);
 router.post('/downvote',Authenticate,voting.downvote);
 
-router.get('/logout',Log.logout);
+router.post('/logout',Log.logout);
 
 
 
