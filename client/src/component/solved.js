@@ -3,6 +3,9 @@ import '../asset/css/solves.css'
 import { useToasts } from 'react-toast-notifications';
 
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import { Url } from '../constants/link';
+
 
 export const Solved=(props)=>{
     
@@ -20,16 +23,21 @@ export const Solved=(props)=>{
       console.log(array);
 
     }
-    const fromdata= new FormData();
+    
     const solved= async()=>{
+      const cookies = new Cookies();
+      const fromdata= new FormData();
+      const c= cookies.get('token');
+     
+      fromdata.append('cookies',c);
         fromdata.append("id",array[0]);
         fromdata.append("pid",array[1]);
         fromdata.append("uid",array[2]);
 
-        const response= await fetch('/solved',{
+        const response= await fetch(Url+'/solved',{
           method:"POST",
              
-          credentials:"include",
+         
           
           body: fromdata
           

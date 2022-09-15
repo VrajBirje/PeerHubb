@@ -4,6 +4,7 @@ import styles from '../asset/css/singup.module.css'
 import { useToasts } from 'react-toast-notifications';
 
 import { useNavigate } from 'react-router-dom';
+import { Url } from '../constants/link';
 
 export const Singup=()=>{
 
@@ -29,7 +30,7 @@ export const Singup=()=>{
           e.preventDefault();
           
           const {username,email,profession,university,enrolled,courseyr,password}=user;
-          const response= await fetch('/register',{
+          const response= await fetch(Url+'/register',{
             method:"POST",
             headers:{
               "Content-Type": "application/json"
@@ -39,6 +40,7 @@ export const Singup=()=>{
             })
           });
 
+          console.log(response);
           
           const data= await response.json();
            
@@ -73,11 +75,11 @@ export const Singup=()=>{
           </div>
           <div className={styles.form}>
             <form  method="POST">
-              <input type="text" name="username" id="username" placeholder="Name" 
+              <input type="text" name="username" id="username" placeholder="UserName (Unique)" 
                  value={user.username}
                  onChange={handleInputs}
               />
-              <input type="email" name="email" placeholder="University Email" id="email" 
+              <input type="email" name="email" placeholder="University Email (Only)" id="email" 
                  value={user.email}
                  onChange={handleInputs}
               />
@@ -106,10 +108,11 @@ export const Singup=()=>{
                   value={user.password}
                   onChange={handleInputs}
               />
+                <div className={styles.card_terms}>
+                <span>Publish a Post Related to Education Content Only (I Agreed)</span>
+              </div>
               <button onClick={Postdata} disabled={buttonIn}>{buttonIn? 'Please Wait..':'Sing-up'}</button>
-              {/* <div className={styles.card_terms}>
-                <input type="checkbox" name id="terms" /> <span>I have read and agree to the <a href>Terms of Service</a></span>
-              </div> */}
+              
             </form>
           </div>
         </div>

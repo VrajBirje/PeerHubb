@@ -1,8 +1,9 @@
 const express= require('express');
-const port=6000;
+const port=7789;
 const app= express();
 var cookies = require("cookie-parser");
 var fileupload = require("express-fileupload");
+var cors = require('cors');
 
 
 
@@ -14,9 +15,10 @@ const path=require('path');
 
 // set engine ejs in form of key and value
 app.set('view engine','ejs');
+
+
+app.use(cors());
 app.use(cookies());
-
-
 
 
 
@@ -42,6 +44,7 @@ app.use(express.json())
 
 app.use('/uploads', express.static(__dirname+'/uploads'));
 app.use('/public', express.static('public'))
+app.use('/uploads', express.static('uploads'))
 
 app.use('/',require('./router'))
 

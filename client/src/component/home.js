@@ -168,14 +168,14 @@ export function Home(){
         <div className="u-container-layout u-container-layout-1">
           <h2 className="u-text u-text-1">
             {" "}
-            Help each Person to Solve the Doubt and Get Points.
+            Help Each Person To Solve The Doubt And Get Points.
           </h2>
         </div>
       </div>
       <div className="u-list u-list-1">
         <div className="u-repeater u-repeater-1">
           {/* General Discussion */}
-          <a href="">
+          
             <div className="u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-video-cover u-white u-list-item-1">
               <div className="u-container-layout u-similar-container u-valign-top u-container-layout-2">
                 <span className="u-file-icon u-icon u-icon-circle u-palette-3-base u-icon-1">
@@ -188,7 +188,7 @@ export function Home(){
                 </h4>
               </div>
             </div>
-          </a>
+         
           {/* Having Doubt */}
           
             <div className="u-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-video-cover u-white u-list-item-2">
@@ -209,7 +209,7 @@ export function Home(){
             <div className="u-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-video-cover u-white u-list-item-3">
               <div className="u-container-layout u-similar-container u-valign-top u-container-layout-4">
                 <span className="u-file-icon u-icon u-icon-circle u-palette-3-base u-icon-3">
-                  <img src="https://cdn-icons.flaticon.com/png/512/2896/premium/2896418.png?token=exp=1660845211~hmac=dd382c79d56da4e7114388bf8db8c7ce" alt="" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/2618/2618497.png" alt="" />
                 </span>
                 <h4 className="u-align-center-sm u-align-center-xs u-text u-text-palette-1-base u-text-4">
                   Solve the Doubt
@@ -458,6 +458,11 @@ export function Home(){
                 <p className="u-text u-text-3">
                     This Website is Built Using MERN (MongoDB Express React NodeJS) Stack and much more library <br></br>
                     Hope You Love it 
+                    <br></br>
+                    <span style={{color:"red"}}>For Contact </span> : namitkumar.nk2003@gmail.com
+                    <br></br>
+                    +91 9311867599
+
                   <span style={{ fontStyle: "italic" }} />
                 </p>
               </div>

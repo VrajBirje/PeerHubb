@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import styles from "../asset/css/explore-nav.module.css";
+import Cookies from 'universal-cookie';
+
+import { Url } from "../constants/link";
 
 
 export function Explore() {
@@ -14,8 +17,9 @@ export function Explore() {
   const callaboutPage = async () => {
     try {
       
-      const url="http://18.237.56.192:6000/explore"
-      const res = await fetch(url);
+      const url=Url+"/explore"
+      
+      const res = await fetch(url,{method:"GET"});
 
       const data = await res.json();
       setPosts(data.message);
@@ -37,7 +41,7 @@ export function Explore() {
 
   const problem = async () => {
     try {
-      const res = await fetch("/different/problem", {
+      const res = await fetch(Url+"/different/problem", {
         method: "GET",
       });
 
@@ -55,7 +59,7 @@ export function Explore() {
 
   const career = async () => {
     try {
-      const res = await fetch("/different/carrer", {
+      const res = await fetch(Url+"/different/carrer", {
         method: "GET",
       });
 
@@ -73,7 +77,7 @@ export function Explore() {
 
   const study = async () => {
     try {
-      const res = await fetch("/different/study-guide", {
+      const res = await fetch(Url+"/different/study-guide", {
         method: "GET",
       });
 
@@ -91,7 +95,7 @@ export function Explore() {
 
   const gd = async () => {
     try {
-      const res = await fetch("/different/gd", {
+      const res = await fetch(Url+"/different/gd", {
         method: "GET",
       });
 
@@ -109,7 +113,7 @@ export function Explore() {
 
   const feedback = async () => {
     try {
-      const res = await fetch("/different/feedback", {
+      const res = await fetch(Url+"/different/feedback", {
         method: "GET",
       });
 
@@ -134,16 +138,18 @@ export function Explore() {
 
  
   const upward = async (e) => {
-
-    const fromdata= new FormData();
-    const b = e.target.getAttribute('value');
-   
-     fromdata.append('id',b);
+    const cookies = new Cookies();
+      const fromdata= new FormData();
+      const b = e.target.getAttribute('value');
+      const c= cookies.get('token');
+      
+        fromdata.append('cookies',c);
+       fromdata.append('id',b);
   
-    const response= await fetch('/upvote',{
+    const response= await fetch(Url+'/upvote',{
       method:"POST",
              
-      credentials:"include",
+     
 
       body:fromdata
     })
@@ -166,16 +172,21 @@ export function Explore() {
   };
 
   const downward = async (e) => {
+    const cookies = new Cookies();
    
     const fromdata= new FormData();
+
     const b = e.target.getAttribute('value');
+    const c= cookies.get('token');
+      
+        fromdata.append('cookies',c);
    
      fromdata.append('id',b);
   
-    const response= await fetch('/downvote',{
+    const response= await fetch(Url+'/downvote',{
       method:"POST",
              
-      credentials:"include",
+     
 
       body:fromdata
     })

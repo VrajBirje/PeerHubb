@@ -15,6 +15,9 @@ import Solved from "./component/solved";
 import Rank from "./component/ranking";
 import Logout from "./component/logout";
 import Soon from "./component/soon";
+import { CookiesProvider } from "react-cookie";
+import Cookies from 'universal-cookie';
+import { Url } from "./constants/link";
 
 
 
@@ -32,15 +35,20 @@ const  App=(props)=> {
 
    const checkloginstatus=async()=>{
         try{
-            const response= await fetch('/verify-user',{
-              method:"GET",
-             
-              credentials:"include"
-             });
+          const cookies = new Cookies();
+          const fromdata= new FormData();
+          const c= cookies.get('token');
+          console.log(c);
+          fromdata.append('cookies',c);
+          const response= await fetch(Url+'/verify-user',{
+            method:"POST",
+             body:fromdata
+            
+           });
              
              const data= await response.json();
             
-             console.log(data.message);
+             console.log(response);
               islogin(data.message);
               console.log(login);
             }
@@ -57,7 +65,7 @@ const  App=(props)=> {
     },[])
     return (
 
-       
+      <CookiesProvider>   
     <div className="App">
       
 
@@ -82,6 +90,7 @@ const  App=(props)=> {
          </Routes> 
     
     </div>
+    </CookiesProvider>
     )
   
 }

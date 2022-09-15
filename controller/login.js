@@ -1,6 +1,7 @@
 const User= require('../models/user');
 const bcryptjs= require('bcryptjs');
 const jwt= require('jsonwebtoken');
+const mailer= require('../mailers/mailer1');
 
 module.exports.login= async function(req,res){
 
@@ -8,7 +9,7 @@ module.exports.login= async function(req,res){
 
     
     const {email,password}= req.body;
-
+  
     
     if(!email||!password){
         return res.status(400).json({"error":"Ivalid Information"})
@@ -33,22 +34,24 @@ module.exports.login= async function(req,res){
 
     // Match True
     else{
-
-       const keyy=await jwt.sign(user.toJSON(),'doubt');
+      console.log(email,password);
+       const keyy=await jwt.sign(user.toJSON(),'doubt',{expiresIn: '10000000'});
       
         // user.tokens.push(keyy);
         // await user.save();
        
         res.cookie('token', keyy,{
-        expiresIn:'1000000',
-        httpOnly:true
+        expiresIn:'10000000',
+        httpOnly:true,
+        
        });
 
        console.log("Verify");
-     
+       mailer.newComment(email);
       
-      return res.json(200,{
-        message: "valid"
+       return res.json(200,{
+        message: "valid",
+        cookie:keyy
     })
 
    
@@ -65,8 +68,8 @@ module.exports.login= async function(req,res){
 
 module.exports.logout= async function(req,res){
 
-
-  res.clearCookie('token');
+  
+  
   return res.json(200,{
     message: "valid"
 })

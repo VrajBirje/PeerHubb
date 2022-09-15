@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import '../asset/css/rank.css';
 import Loading from "./loading";
+import { Url } from '../constants/link';
 
 export const Rank=()=>{
 
   const [loading,setLoading]= useState([true]); 
     const [user,setUser1]= useState([]);
     const call=async ()=>{
-        const response= await fetch('/ranking',{
+        const response= await fetch(Url+'/ranking',{
           method:"GET"
         })
 

@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { useToasts } from 'react-toast-notifications';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import { Url } from '../constants/link';
 
 
 const EachPost=(props)=>{
@@ -12,15 +14,17 @@ const EachPost=(props)=>{
   const [userid,setUserid]= useState("");
   const callPost= async()=>{
 
+    const cookies = new Cookies();
     console.log("eerrr");
       try{
-        const res= await fetch('/verify-user',{
-          method:"GET",
-          headers:{
-             Accept:"application/json",
-            "Content-Type": "application/json"
-          },
-          credentials:"include"
+        const fromdata= new FormData();
+        const c= cookies.get('token');
+        
+        fromdata.append('cookies',c);
+        const res= await fetch(Url+'/verify-user',{
+          method:"POST",
+           body:fromdata
+          
          });
 
         
@@ -28,8 +32,7 @@ const EachPost=(props)=>{
          const a=data.message.username;
          setUsername(a);
          setUserid(data.message._id);
-         console.log(data.message._id);
-         console.log(res);
+       
        
 
         
@@ -82,7 +85,7 @@ const EachPost=(props)=>{
             
             
             console.log(postId);
-            const res= await fetch('/explore-post',{
+            const res= await fetch(Url+'/explore-post',{
               method:"POST",
               headers:{
                 "Content-Type": "application/json"
@@ -145,6 +148,8 @@ const EachPost=(props)=>{
 
      const Postcomment= async(e)=>{
       e.preventDefault();
+      const cookies = new Cookies();
+      const c= cookies.get('token');
       setbuttonIn(true);
       const {comment}= comment1;
       fromdata.append('img',selectedFiles);
@@ -152,12 +157,12 @@ const EachPost=(props)=>{
       fromdata.append('comment',comment);
       fromdata.append('postid',postId);
       console.log(comment);
-     
+      fromdata.append('cookies',c);
 
-      const res= await fetch('/create-comment',{
+      const res= await fetch(Url+'/create-comment',{
         method:"POST",
            
-        credentials:"include",
+        
         
         body: fromdata
         

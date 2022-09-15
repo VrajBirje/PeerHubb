@@ -1,9 +1,10 @@
-
+import Cookies from 'universal-cookie';
 import '../asset/css/user-profile.css'
 import { useNavigate } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import { Url } from '../constants/link';
 
 export const Userprofile=()=>{
   const {addToast}= useToasts();
@@ -15,16 +16,17 @@ export const Userprofile=()=>{
   const [proffession,setprofession]= useState();
 
   const callPost= async()=>{
-
+    const cookies = new Cookies();
     console.log("eerrr");
       try{
-        const res= await fetch('/verify-user',{
-          method:"GET",
-          headers:{
-             Accept:"application/json",
-            "Content-Type": "application/json"
-          },
-          credentials:"include"
+        const fromdata= new FormData();
+        const c= cookies.get('token');
+        console.log(c);
+        fromdata.append('cookies',c);
+        const res= await fetch(Url+'/verify-user',{
+          method:"POST",
+           body:fromdata
+          
          });
 
         

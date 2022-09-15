@@ -9,6 +9,8 @@ module.exports.CreatePost= async function(req,res){
     
 
     try{
+           console.log(req.rootUser._id);
+           console.log(req.body);
            const uid=req.rootUser._id;
            const heading=req.body.heading;
            const description=req.body.message;
@@ -17,6 +19,7 @@ module.exports.CreatePost= async function(req,res){
            const hidden= req.body.hidden;
            const sub=req.body.subject;
            if(!uid||!heading||!description||!type||!hidden||!sub){
+               console.log("invalid ");
             return res.json(400,{
                 message: "Invalid"
             })
@@ -45,7 +48,10 @@ module.exports.CreatePost= async function(req,res){
                     })
 
                    
-                    post.avatar= PostContainer.avatarPath+"/"+files.name;
+                    const pathimg="http://127.0.0.1:7789/uploads/users"+"/"+files.name;
+                    post.avatar= pathimg;
+                                     console.log(post.avatar);
+                                     console.log(pathimg);
                 }
                
                 if(sub){ 
@@ -62,6 +68,7 @@ module.exports.CreatePost= async function(req,res){
            
            console.log("Kamm ")
            return res.json(200,{
+  
             message: "Post completed"
         })
 

@@ -1,8 +1,9 @@
 import '../asset/css/create-post.css';
-
+import Cookies from 'universal-cookie';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
+import { Url } from '../constants/link';
 
 
 
@@ -20,15 +21,17 @@ export function CreatePost(){
 
   const callPost= async()=>{
 
+    const cookies = new Cookies();
     console.log("eerrr");
       try{
-        const res= await fetch('/verify-user',{
-          method:"GET",
-          headers:{
-             Accept:"application/json",
-            "Content-Type": "application/json"
-          },
-          credentials:"include"
+        const fromdata= new FormData();
+        const c= cookies.get('token');
+        console.log(c);
+        fromdata.append('cookies',c);
+        const res= await fetch(Url+'/verify-user',{
+          method:"POST",
+           body:fromdata
+          
          });
 
         
@@ -98,10 +101,14 @@ export function CreatePost(){
   }
 
   const CreatePost= async(e)=>{
-
-    setbuttonIn(true);
     e.preventDefault();
-   const {heading,subject,fieldname,message}=user;
+    setbuttonIn(true);
+    const cookies = new Cookies();
+    const c= cookies.get('token');
+   
+    fromdata.append('cookies',c);
+   
+    const {heading,subject,fieldname,message}=user;
     fromdata.append('img',selectedFiles);
     fromdata.append('heading',heading);
     fromdata.append('subject',subject);
@@ -110,15 +117,16 @@ export function CreatePost(){
     fromdata.append('type',type);
     fromdata.append('hidden',hidden);
 
-    const res= await fetch('/create-post',{
+    const res= await fetch(Url+'/create-post',{
       method:"POST",
          
-      credentials:"include",
+      
       
       body: fromdata
       
     });
 
+    
     if(res.status===200){
       addToast("Post Created",{
         appearances:true,
@@ -181,11 +189,11 @@ export function CreatePost(){
             </li>
             <li>
               <div className="grid grid-2">
-                <input type="text" placeholder="Heading" name="heading" required 
+                <input type="text" placeholder="Heading (Required)" name="heading" required 
                      value={user.heading}
                      onChange={handleInputs}
                 />  
-                <input type="text" placeholder="Subject (if any) " name="subject" 
+                <input type="text" placeholder="Subject (Required) " name="subject" 
                     value={user.subject}
                     onChange={handleInputs}
                 />
@@ -197,7 +205,7 @@ export function CreatePost(){
               </div>
             </li>    
             <li>
-              <textarea placeholder="Message" defaultValue={""} required name="message"
+              <textarea placeholder="Message (Required)" defaultValue={""} required name="message"
                  value={user.message}
                  onChange={handleInputs}
               />
