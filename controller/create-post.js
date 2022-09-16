@@ -48,7 +48,7 @@ module.exports.CreatePost= async function(req,res){
                     })
 
                    
-                    const pathimg="http://127.0.0.1:7789/uploads/users"+"/"+files.name;
+                    const pathimg="http://18.237.56.192:7780/uploads/users"+"/"+files.name;
                     post.avatar= pathimg;
                                      console.log(post.avatar);
                                      console.log(pathimg);
