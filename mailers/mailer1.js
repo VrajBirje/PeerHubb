@@ -1,14 +1,14 @@
 const nodemailer= require('../config/mailer');
 
 // this is another way
-exports.newComment= (comment)=>{
-     console.log("Inside new Coomment Mailer "+comment);
+exports.newComment= (email,otp)=>{
+   
 
      nodemailer.transporter.sendMail({
         from:'namitvedwan16@gmail.com',
-        to:comment,
+        to:email,
         subject:"Welcome to the Doubt-Mate",
-        html:'<h2>Hey Mate👺</h2>'
+        html:'<h2>Hey Mate👺</h2> '+otp
 
 
      },(err,info)=>{

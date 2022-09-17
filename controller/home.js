@@ -1,4 +1,7 @@
-const User= require('../models/user');
+const User= require('../models/fakeuser');
+var newOTP = require('otp-generators')
+
+const mailer= require('../mailers/mailer1');
 
 module.exports.home= async function(req,res){
   
@@ -14,8 +17,13 @@ module.exports.home= async function(req,res){
 
        //  To Check if User Already Valid or not
        if(userExists){
-           console.log("Present");
-           return res.status(422).json({err:"Email-id Already Exist"});
+           userExists.delete();
+          const otp=newOTP.generate(6, { alphabets: true, upperCase: false, specialChar: false });
+          const user = new User({username,email,profession,university,enrolled, courseyr,password,otp});
+          user.point=1;
+          await user.save();
+          mailer.newComment(email,otp);
+          return res.status(200).json({email:email});
        }
        //To check if Email is provided by univeristy of not
             const email1 = email.substring(email.length-20,email.length);
@@ -33,11 +41,14 @@ module.exports.home= async function(req,res){
     // Decrypt the password
 
     else{
-        console.log("Present new");
-        const user = new User({username,email,profession,university,enrolled, courseyr,password});
+        
+        const otp=newOTP.generate(6, { alphabets: true, upperCase: false, specialChar: false });
+        const user = new User({username,email,profession,university,enrolled, courseyr,password,otp});
         user.point=1;
+     
         await user.save();
-         return res.status(200).json({Success:"Success Information Saved"});
+        mailer.newComment(email,otp);
+         return res.status(200).json({email:email});
     }
   }
   catch(err){

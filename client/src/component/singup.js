@@ -6,12 +6,15 @@ import { useToasts } from 'react-toast-notifications';
 import { useNavigate } from 'react-router-dom';
 import { Url } from '../constants/link';
 
+
+
 export const Singup=()=>{
 
   const[buttonIn,setbuttonIn]= useState(false); 
   const [user,setUser]= useState({
     username:"",email:"",profession:"",university:"",enrolled:"",courseyr:"",password:""
   });
+  
   const history=useNavigate();
   let name,value;
 
@@ -24,6 +27,7 @@ export const Singup=()=>{
     setUser({...user,[name]:value})
 
   }
+  
   const {addToast}= useToasts();
   const Postdata= async(e)=>{
            setbuttonIn(true);
@@ -47,6 +51,7 @@ export const Singup=()=>{
          
           if(response.status===200){
 
+            console.log(data.email);
             addToast("Created",{
               appearances:true,
               autoDismiss:true
@@ -74,19 +79,19 @@ export const Singup=()=>{
             <h1>Create Account</h1>
           </div>
           <div className={styles.form}>
-            <form  method="POST">
+            <form  >
               <input type="text" name="username" id="username" placeholder="UserName (Unique)" 
                  value={user.username}
                  onChange={handleInputs}
               />
               <input type="email" name="email" placeholder="University Email (Only)" id="email" 
                  value={user.email}
+                 
                  onChange={handleInputs}
+                
               />
-               {/* <input type="email" name="email" placeholder="OTP" id="email" 
-                //  value={user.email}
-                //  onChange={handleInputs}
-              /> */}
+              
+             
               <input type="text" name="profession" id="username" placeholder="Student or Teacher" 
                   value={user.profession}
                   onChange={handleInputs}
