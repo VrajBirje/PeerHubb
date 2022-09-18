@@ -1,5 +1,6 @@
 const User= require('../models/fakeuser');
 var newOTP = require('otp-generators')
+const Realuser= require('../models/user');
 
 const mailer= require('../mailers/mailer1');
 
@@ -14,6 +15,10 @@ module.exports.home= async function(req,res){
     try{
 
       const userExists= await User.findOne({email:email});
+      const realExists= await Realuser.findOne({email:email});
+      if(realExists){
+        return res.status(422).json({err:"Login-Please"});
+      }
 
        //  To Check if User Already Valid or not
        if(userExists){
@@ -54,4 +59,54 @@ module.exports.home= async function(req,res){
   catch(err){
       console.log("E "+err)
   }
+}
+
+module.exports.otp= async function(req,res){
+    const {useremail,myotp}= req.body;
+   
+    if(!useremail||!myotp){
+      return res.status(422).json({err:"Invalid"});
+    }
+    const userExists= await User.findOne({email:useremail});
+
+    if(userExists){
+        
+      const otp= userExists.otp;
+      console.log(otp);
+      console.log(myotp);
+
+      const realExists= await Realuser.findOne({email:useremail});
+      
+      if(myotp!==otp||realExists){
+        return res.status(422).json({err:"Invalid"});
+      }
+      if(myotp===otp){
+         const username= userExists.username;
+         const email=userExists.email;
+         const profession=userExists.profession;
+         const university=userExists.university
+         const enrolled=userExists.enrolled;
+         const courseyr=userExists.courseyr;
+         const password= userExists.password;
+ 
+         const realuser = new Realuser({username,email,profession,university,enrolled, courseyr,password,otp});
+         realuser.point=1;
+      
+         await realuser.save();
+         mailer.newaccount(email,username);
+
+         return res.status(200).json({email:email});
+
+
+
+      }
+      else{
+        return res.status(422).json({err:"Invalid"});
+      }
+       
+
+    }
+
+
+
 }

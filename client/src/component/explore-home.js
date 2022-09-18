@@ -241,7 +241,7 @@ export function Explore() {
                     <img
                       class="iconimg"
                       value={item._id}
-                      src="https://cdn-icons-png.flaticon.com/512/545/545679.png"
+                      src="https://img.icons8.com/ios-glyphs/344/up--v1.png"
                     />
                   </button>
                   <button
@@ -252,7 +252,7 @@ export function Explore() {
                     <img
                       class="iconimg"
                       value={item._id}
-                      src="https://cdn-icons.flaticon.com/png/512/2989/premium/2989995.png?token=exp=1660895128~hmac=9bdf7d9fbbf31ba5860935b32423975e"
+                      src="https://img.icons8.com/ios-glyphs/344/down.png"
                     />
                   </button>
                 </icon>

@@ -15,6 +15,7 @@ import Solved from "./component/solved";
 import Rank from "./component/ranking";
 import Logout from "./component/logout";
 import Soon from "./component/soon";
+import { Otp } from "./component/OTP";
 import { CookiesProvider } from "react-cookie";
 import Cookies from 'universal-cookie';
 import { Url } from "./constants/link";
@@ -29,6 +30,8 @@ const  App=(props)=> {
     
     const [login, islogin] = useState([])
     const [solved, setSolved] = useState([]);
+
+    const [otpemail,setotpEmail]= useState('');
    
    
 
@@ -75,7 +78,7 @@ const  App=(props)=> {
         <Routes>
             <Route exact path="/" element={<Home />}/>
             <Route exact path="/explore/*" element={<ExploreIndex />}/>
-            <Route exact path="/sing-up" element={<Singup />}/>
+            <Route exact path="/sing-up" element={<Singup setOtpEmail={setotpEmail} />}/>
             <Route exact path="/login" element={<Login login={islogin}/>}/>
             <Route exact path="/create-post" element={<CreatePost />}/>
             <Route exact path="/my-profile" element={<Userprofile />}/>
@@ -84,6 +87,7 @@ const  App=(props)=> {
             <Route exact path="/rank" element={<Rank />}/>
             <Route exact path="/log-out" element={<Logout login={islogin}/>}/>
             <Route exact path="/soon" element={<Soon/>}/>
+            <Route exact path="/otp" element={<Otp otpemail={otpemail}/>}/>
        
 
 

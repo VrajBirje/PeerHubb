@@ -8,7 +8,7 @@ import { Url } from '../constants/link';
 
 
 
-export const Singup=()=>{
+export const Singup=(props)=>{
 
   const[buttonIn,setbuttonIn]= useState(false); 
   const [user,setUser]= useState({
@@ -51,13 +51,14 @@ export const Singup=()=>{
          
           if(response.status===200){
 
+            props.setOtpEmail(data.email);
             console.log(data.email);
-            addToast("Created",{
+            addToast("Please Verify",{
               appearances:true,
               autoDismiss:true
             });
             setbuttonIn(false);
-            history('/login')
+            history('/otp')
             
           }
           else{

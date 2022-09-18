@@ -19,6 +19,8 @@ const voting= require('../controller/voting');
 // home page
 router.post('/register',Home.home);
 
+router.post('/otp',Home.otp);
+
 // login
 router.post('/log-in',Log.login);
 
