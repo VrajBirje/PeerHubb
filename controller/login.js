@@ -11,12 +11,14 @@ module.exports.login= async function(req,res){
     const {email,password}= req.body;
   
     
+    console.log(email,password);
     if(!email||!password){
         return res.status(400).json({"error":"Ivalid Information"})
     }
 
     // To check if Email is present or not
     const user= await User.findOne({email:email});
+    console.log(user);
     if(!user){
         return res.status(400).json({"message":"Invalid"})
     }
@@ -26,7 +28,7 @@ module.exports.login= async function(req,res){
 
     // Mismatch False
     if(!ismatch){
-       
+       console.log('Mis Match');
       return res.json(422,{
         message: "Invalid"
     })

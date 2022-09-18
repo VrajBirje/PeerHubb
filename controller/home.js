@@ -88,8 +88,9 @@ module.exports.otp= async function(req,res){
          const enrolled=userExists.enrolled;
          const courseyr=userExists.courseyr;
          const password= userExists.password;
+        
  
-         const realuser = new Realuser({username,email,profession,university,enrolled, courseyr,password,otp});
+         const realuser = new Realuser({username,email,profession,university,enrolled, courseyr,password});
          realuser.point=1;
       
          await realuser.save();

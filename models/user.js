@@ -63,28 +63,6 @@ const user= new mongoose.Schema({
 });
 
 
-
-
-
-// Hashing the password
-
-user.pre('save', async function(next){
-   console.log("Inside");
-   if(this.isModified('password')){
-      
-      var password=this.password;
-      await bycrypt.hash(password, 6).then(function(hash) {
-
-         console.log(hash);
-         password=hash;
-     });
-   
-     this.password=password;
-   }
-   next();
-})
-
-
 const UserInfo= mongoose.model('UserInfo',user);
 
 module.exports=UserInfo;
