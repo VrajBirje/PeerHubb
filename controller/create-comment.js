@@ -47,7 +47,7 @@ module.exports.Comment= async function(req,res){
         // console.log(Post.user.email);
         // console.log(Post11.user.email);
         const email= Post11.user.email;
-        mailer.newComment(email);
+        mailer.newanswer(email);
         return res.json(200,{
             message: "Comment completed"
         })

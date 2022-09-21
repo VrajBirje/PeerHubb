@@ -31,8 +31,8 @@ module.exports.home= async function(req,res){
           return res.status(200).json({email:email});
        }
        //To check if Email is provided by univeristy of not
-            const email1 = email.substring(email.length-20,email.length);
-            const check= ".srmuniversity.ac.in";
+            const email1 = email.substring(email.length-19,email.length);
+            const check= "srmuniversity.ac.in";
             if(email1!==check){
 
             console.log("Email not matching");

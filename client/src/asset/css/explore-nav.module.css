@@ -6,24 +6,30 @@
     flex-wrap: wrap;
     max-width: 320px;
     background: linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%);
+    background-image :linear-gradient(315deg, #20bf55 0%, #01baef 74%);
     
   }
   .button{
-    background: #999;
+    /* background: #999;
      padding: 1em 2.4em;
      font-size: .9em;
      margin: 1em;
      color: white;
      text-decoration: none;
      flex-grow: 1;
-     text-align: center;
+     text-align: center; */
     
 
      
    }
    .buttonarea{
-     
+    align-items: center;
+    align-content: center;
+    text-align: center;
     background: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    background-image :linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+    /* background: #333; */
+    background: rgb(10, 176, 182);
    }
 
 
@@ -214,6 +220,49 @@ body{
 }
 .toggle .line3{
     transform: rotate(45deg) translate(-5px,-6px);
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+          -webkit-tap-highlight-color: transparent;
+  }
+
+
+  .button {
+	width: 180px;
+	height: 50px;
+	cursor: pointer;
+	/* background: #333; */
+	margin: 10px;
+	border: none;
+	border-radius: 10px;
+	/* box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444, inset -5px -5px 10px #222; */
+	color: rgb(88, 88, 88);
+
+	font-size: 16px;
+
+    background-image :linear-gradient(-315deg, #20bf55 0%, #01baef 74%);
+     box-shadow:linear-gradient(315deg, #20bf55 0%, #01baef 74%) ;
+    
+}
+
+.button:hover {
+	box-shadow: -5px -5px 15px #20bf55, 5px 5px 15px #01baef, inset 5px 5px 10px #20bf55, inset -5px -5px 10px #01baef;
+	font-size: 15px;
+	transition: 500ms;
+}
+
+.button:focus {
+	outline: none;
+}  
+
+.red{
+   color: blue;
 }
 
 

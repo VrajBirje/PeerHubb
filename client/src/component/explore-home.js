@@ -14,6 +14,10 @@ export function Explore() {
   const { addToast } = useToasts();
   const [posts, setPosts] = useState([]);
   // const [vote, setVote] = useState(0);
+  
+   
+  
+
   const callaboutPage = async () => {
     try {
       const url = Url + "/explore";
@@ -31,7 +35,6 @@ export function Explore() {
       }
     } catch (e) {}
   };
-
 
   const problem = async () => {
     try {
@@ -126,9 +129,7 @@ export function Explore() {
   useEffect(() => {
     callaboutPage();
   }, []);
-  useEffect(() => {
-   
-  }, [posts]);
+  useEffect(() => {}, [posts]);
 
   const upward = async (e) => {
     const cookies = new Cookies();
@@ -222,8 +223,9 @@ export function Explore() {
         </Link>
         <Link to="/create-post">
           {" "}
-          <button className={styles.button}> Create-post</button>
+          <button className={styles.button}> <spam className={styles.red}>Create-post</spam></button>
         </Link>
+       
       </div>
 
       <div className="whole-page">
