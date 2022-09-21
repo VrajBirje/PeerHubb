@@ -2,7 +2,7 @@
 
 import '../asset/css/Home.css';
 import '../asset/css/nicepage.css';
-import logo from '../asset/images/bn.jpg'
+
 import { Link } from "react-router-dom";
 
 

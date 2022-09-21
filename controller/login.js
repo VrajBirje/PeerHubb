@@ -48,8 +48,8 @@ module.exports.login= async function(req,res){
         
        });
 
-       console.log("Verify");
-       mailer.newComment(email);
+      //  console.log("Verify");
+      //  mailer.newComment(email);
       
        return res.json(200,{
         message: "valid",

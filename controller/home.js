@@ -6,9 +6,9 @@ const mailer= require('../mailers/mailer1');
 
 module.exports.home= async function(req,res){
   
-    const {username,email,profession,university,enrolled, courseyr,password}= req.body;
-    console.log(username+" "+email+" "+courseyr);
-    if(!username || !email|| !profession||!university||!enrolled||! courseyr||!password){
+    const {username,email,profession,university,enrolled,password}= req.body;
+
+    if(!username || !email|| !profession||!university||!enrolled||! password){
         console.log("Present not");
         return res.status(422).json({err:"Incomplete Information"});
     }
@@ -24,7 +24,7 @@ module.exports.home= async function(req,res){
        if(userExists){
            userExists.delete();
           const otp=newOTP.generate(6, { alphabets: true, upperCase: false, specialChar: false });
-          const user = new User({username,email,profession,university,enrolled, courseyr,password,otp});
+          const user = new User({username,email,profession,university,enrolled,password,otp});
           user.point=1;
           await user.save();
           mailer.newComment(email,otp);
@@ -48,7 +48,7 @@ module.exports.home= async function(req,res){
     else{
         
         const otp=newOTP.generate(6, { alphabets: true, upperCase: false, specialChar: false });
-        const user = new User({username,email,profession,university,enrolled, courseyr,password,otp});
+        const user = new User({username,email,profession,university,enrolled,password,otp});
         user.point=1;
      
         await user.save();
@@ -86,11 +86,11 @@ module.exports.otp= async function(req,res){
          const profession=userExists.profession;
          const university=userExists.university
          const enrolled=userExists.enrolled;
-         const courseyr=userExists.courseyr;
+        //  const courseyr=userExists.courseyr;
          const password= userExists.password;
         
  
-         const realuser = new Realuser({username,email,profession,university,enrolled, courseyr,password});
+         const realuser = new Realuser({username,email,profession,university,enrolled,password});
          realuser.point=1;
       
          await realuser.save();

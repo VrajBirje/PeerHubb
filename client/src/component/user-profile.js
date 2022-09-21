@@ -21,7 +21,7 @@ export const Userprofile=()=>{
       try{
         const fromdata= new FormData();
         const c= cookies.get('token');
-        console.log(c);
+      
         fromdata.append('cookies',c);
         const res= await fetch(Url+'/verify-user',{
           method:"POST",

@@ -29,10 +29,7 @@ const user= new mongoose.Schema({
         type:String,
         required:true
      },
-     courseyr:{
-        type:Date,
-        required:true
-     },
+     
      point:{
          type:Number,
         

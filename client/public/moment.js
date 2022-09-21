@@ -1,3 +1,6 @@
+
+
+
 document.querySelector('body').addEventListener('mousemove',eyeball);
   function eyeball(){
   var eye = document.querySelectorAll('.eye');
@@ -45,13 +48,5 @@ document.querySelector('body').addEventListener('mousemove',eyeball);
 
 }
 
-function myFunction() {
-  var x = document.getElementsByTagName("#topnav")
-  console.log("hello");
-  console.log(x);
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+
+  

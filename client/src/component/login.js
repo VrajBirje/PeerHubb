@@ -49,7 +49,7 @@ export const Login=(props)=>{
 
          
           const data= await response.json();
-          console.log(data);
+        
           setCookie('token',data.cookie);
         
          

@@ -1,10 +1,11 @@
 .button-area {
-    margin: 10px auto;
+    margin: 20px auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     max-width: 320px;
+    background: linear-gradient(69.9deg, rgb(76, 79, 106) 3.2%, rgb(118, 124, 163) 97.6%);
     
   }
   .button{
@@ -16,6 +17,13 @@
      text-decoration: none;
      flex-grow: 1;
      text-align: center;
+    
+
+     
+   }
+   .buttonarea{
+     
+    background: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
    }
 
 
@@ -136,7 +144,7 @@ body{
 
 @media screen and (max-width: 800px){
     nav{
-        position: fixed;
+        /* position: fixed; */
         z-index: 3;
     }
     .hamburger{
@@ -207,3 +215,8 @@ body{
 .toggle .line3{
     transform: rotate(45deg) translate(-5px,-6px);
 }
+
+
+
+/*  */
+

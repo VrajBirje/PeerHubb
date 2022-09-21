@@ -41,5 +41,25 @@ exports.newaccount= (email,name)=>{
    })
 }
 
+exports.newanswer= (email)=>{
+   
+
+   nodemailer.transporter.sendMail({
+      from:'namitvedwan16@gmail.com',
+      to:email,
+      subject:"Someone Commented",
+      html:`<h3>Hey </h3>`+"<br/> <p> Please Check your Post Someone Commented on it <br/> Thanks <br/> Doubt-mate  </p> "
+
+
+   },(err,info)=>{
+      if(err)
+      {
+          console.log("Error in sedning mail " +err)
+      }
+      console.log("Message Sent ",info);
+      return;
+   })
+}
+
 
 

@@ -2,7 +2,8 @@
 
 const PostContainer= require('../models/PostContainer');
 const Answer=require('../models/Answer');
-module.exports.Comment= function(req,res){
+const mailer= require('../mailers/mailer1');
+module.exports.Comment= async function(req,res){
 
 
     try{
@@ -14,6 +15,8 @@ module.exports.Comment= function(req,res){
             return res.status(400).json({"message":"Invalid",});
         }
  
+        const Post = await PostContainer.findOne({"_id":postid}); 
+        const Post11 = await PostContainer.findOne({"_id":postid}).populate('user'); 
         Answer.create({
             answer:answer,
             problem:postid,
@@ -40,6 +43,11 @@ module.exports.Comment= function(req,res){
             }
 
         })
+        // console.log(Post.user);
+        // console.log(Post.user.email);
+        // console.log(Post11.user.email);
+        const email= Post11.user.email;
+        mailer.newComment(email);
         return res.json(200,{
             message: "Comment completed"
         })

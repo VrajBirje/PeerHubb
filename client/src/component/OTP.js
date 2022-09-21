@@ -41,7 +41,7 @@ export const Otp=(props)=>{
           })
         });
 
-        console.log(response.status);
+        
 
         setsending(false);
         if(response.status===200){
@@ -78,7 +78,7 @@ export const Otp=(props)=>{
           <div className={styles.form}>
             <form  method="POST">
               
-              <input type="text" name="otp" placeholder="OTP Send at Email" id="otp" 
+              <input type="text" name="otp" placeholder="OTP Sent at your Email" id="otp" 
                  value={otp}
                  onChange={handleInputs}
               />
