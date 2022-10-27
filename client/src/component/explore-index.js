@@ -1,8 +1,9 @@
 import {BrowserRouter as Router, Routes,Route, BrowserRouter} from "react-router-dom";
 
 import Explore from "./explore-home";
+// import  Explorenew  from "./explorenew";
 
-import CreatePost from "./create-post";
+
 
 
 export function ExploreIndex(){

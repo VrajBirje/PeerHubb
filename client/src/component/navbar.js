@@ -21,7 +21,7 @@ export const Navbar=(props)=>{
     }
     else{
         l1=<li ><Link to="/login">Log-in</Link></li>
-        l2=<li ><Link to="/sing-up">Sing-up</Link></li>;
+        l2=<li ><Link to="/sing-up">Sign-up</Link></li>;
     }
 
     return(
@@ -85,7 +85,7 @@ export const Navbar=(props)=>{
           
         <li className="navtab"> <Link to="/">Home</Link></li> 
         <li className="navtab"> <Link to="/explore">Explore</Link></li>
-         <li className="navtab"> <Link to="/soon">Live-Discussion</Link></li>
+         <li className="navtab"> <Link to="/library">E-Library</Link></li>
          <li className="navtab"> {l1}</li>
         <li className="navtab"> {l2}</li>
 

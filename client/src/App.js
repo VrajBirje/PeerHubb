@@ -7,6 +7,7 @@ import ExploreIndex from "./component/explore-index";
 import Singup from "./component/singup";
 import Login from "./component/login";
 
+
 import {withCookies} from 'react-cookie';
 import CreatePost from "./component/create-post";
 import Userprofile from "./component/user-profile";
@@ -19,6 +20,9 @@ import { Otp } from "./component/OTP";
 import { CookiesProvider } from "react-cookie";
 import Cookies from 'universal-cookie';
 import { Url } from "./constants/link";
+
+import {Library} from "./component/library";
+import {Libraryform} from "./component/library-from";
 
 
 
@@ -88,6 +92,10 @@ const  App=(props)=> {
             <Route exact path="/log-out" element={<Logout login={islogin}/>}/>
             <Route exact path="/soon" element={<Soon/>}/>
             <Route exact path="/otp" element={<Otp otpemail={otpemail}/>}/>
+            <Route exact path="/library" element={<Library />}/>
+           
+            <Route exact path="/library-from" element={<Libraryform />}/>
+
        
 
 

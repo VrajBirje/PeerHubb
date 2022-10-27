@@ -15,5 +15,9 @@ router.get('/gd',Client.groupd);
 router.get('/feedback',Client.feedback);
 
 
+router.post('/votes',Client.vote);
+router.post('/new',Client.new);
+
+
 
 module.exports=router;

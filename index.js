@@ -39,6 +39,8 @@ const db= require('./config/mongoose');
 
 app.use(express.static('asset'));
 app.use(fileupload());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(express.json())
 

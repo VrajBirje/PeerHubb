@@ -335,7 +335,7 @@ export function Home(){
           <p className="u-align-left u-text u-text-2">
             {" "}
             Life is too much Difficult and When you have Doubt its became more
-            Difficut but not know ‼️ Doubt-Mate Will be there{" "}
+            Difficut but not now ‼️ Doubt-Mate Will be there{" "}
           </p>
         </div>
       </div>

@@ -28,10 +28,16 @@ router.post('/log-in',Log.login);
 
 router.get('/explore',Explore.Explore);
 
+router.get('/explorelib',Explore.Lib);
+
+router.post('/libfilter',Explore.filter);
+
 
 // for creating post
 
 router.post('/create-post',Authenticate,Create.CreatePost);
+
+router.post('/create-libpost',Authenticate,Create.library);
 
 // verification of user
 router.post('/verify-user',Authenticate,async (req,res)=>{
@@ -63,6 +69,9 @@ router.post('/upvote',Authenticate,voting.upvote);
 router.post('/downvote',Authenticate,voting.downvote);
 
 router.post('/logout',Log.logout);
+
+
+router.use('/most',require('../router/clinet'));
 
 
 

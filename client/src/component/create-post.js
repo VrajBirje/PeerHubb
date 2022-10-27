@@ -68,7 +68,7 @@ export function CreatePost(){
    },[])
 
     
-    const options = ["Problem", "Group Discussion", "Study Guide","Feedback & Support"];
+    //const options = ["Problem", "Group Discussion", "Study Guide","Feedback & Support"];
     const [user,setUser]= useState({
     heading:"",subject:"",fieldname:"",message:"",
   });

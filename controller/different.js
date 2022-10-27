@@ -40,3 +40,34 @@ module.exports.feedback= async function(req,res){
 
     
 }
+
+
+module.exports.vote= async function(req,res){
+
+    const type= req.body.type;
+    if(type==="null"){
+        let post = await Post.find().sort({'vote':-1});
+        return res.status(200).json({"message":post})
+    }
+    else{
+ 
+        let post = await Post.find({"type":type}).sort({'vote':-1});
+        return res.status(200).json({"message":post})
+    }
+
+
+}
+
+module.exports.new= async function(req,res){
+  const type= req.body.type;
+    if(type==="null"){
+        let post = await Post.find().sort({'createdAt':-1});
+        return res.status(200).json({"message":post})
+    }
+    else{
+        let post = await Post.find({"type":type}).sort({'createdAt':-1});
+        return res.status(200).json({"message":post})
+    }
+
+
+}
