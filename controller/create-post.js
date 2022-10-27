@@ -43,7 +43,7 @@ module.exports.CreatePost = async function (req, res) {
           });
 
           const pathimg =
-            "http://34.221.190.159:7780/uploads/users" + "/" + files.name;
+            "http://52.89.33.49:7780/uploads/users" + "/" + files.name;
           post.avatar = pathimg;
           console.log(post.avatar);
           console.log(pathimg);
@@ -99,7 +99,7 @@ module.exports.library = async function (req, res) {
         subject: subject,
         type: type,
         semester: semester,
-        path: "http://127.0.0.1:7780/uploads/" + time + " " + files.name,
+        path: "http://52.89.33.49:7780/uploads/" + time + " " + files.name,
       },
       function (err, post) {
         if (err) {
