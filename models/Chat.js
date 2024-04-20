@@ -1,6 +1,5 @@
-import { type } from "express/lib/response";
-import UserInfo from "./user";
-import mongoose from "mongoose";
+const UserInfo =  require("./user");
+const mongoose = require("mongoose");
 
 const ChatModel = mongoose.Schema(
     {
@@ -23,4 +22,5 @@ const ChatModel = mongoose.Schema(
 )
 
 const Chat = mongoose.model("Chat", ChatModel);
-export default Chat;
+
+module.exports = Chat;

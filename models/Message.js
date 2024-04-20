@@ -1,7 +1,6 @@
-import mongoose, { mongo } from "mongoose";
-import UserInfo from "./user";
-import Chat from "./Chat";
-import { type } from "express/lib/response";
+const mongoose = require("mongoose");
+const UserInfo = require("./user");
+const  Chat = require("./Chat");
 
 const messageModel = mongoose.Schema({
     sender: {type: mongoose.Schema.Types.ObjectId, ref: UserInfo},
@@ -10,4 +9,5 @@ const messageModel = mongoose.Schema({
 }, {timestamps: true})
 
 const Message = mongoose.model("Message", messageModel);
-export default Message;
+
+module.exports = Message;

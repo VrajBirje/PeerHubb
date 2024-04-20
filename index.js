@@ -4,6 +4,8 @@ const app = express();
 var cookies = require("cookie-parser");
 var fileupload = require("express-fileupload");
 var cors = require("cors");
+const chatRouter = require("./router/chatRoutes");
+const messageRouter = require("./router/messageRoutes");
 
 // Path function
 const path = require("path");
@@ -39,6 +41,8 @@ app.use("/public", express.static("public"));
 app.use("/uploads", express.static("uploads"));
 
 app.use("/", require("./router"));
+app.use("/chat", chatRouter)
+app.use("/message", messageRouter)
 
 app.listen(port, function (err) {
   if (err) {
