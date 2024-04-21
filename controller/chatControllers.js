@@ -26,8 +26,9 @@ const accessChat = asyncHandler(async (req, res)=>{
     if(isChat.length > 0){
         res.send(isChat[0])
     }else{
+        const receiver = await User.findOne({_id: userId})
         const chatData = {
-            chatName: "sender",
+            chatName: receiver.username,
             isGroupChat: false,
             users: [req.userId, userId]
         };

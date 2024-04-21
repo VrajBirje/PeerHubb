@@ -28,6 +28,7 @@ const passport = require("passport");
 // const passportJwt= require('./config/passport-jwt');
 
 const db = require("./config/mongoose");
+const { Socket } = require("socket.io");
 
 app.use(express.static("asset"));
 app.use(fileupload());
@@ -44,7 +45,7 @@ app.use("/", require("./router"));
 app.use("/chat", chatRouter)
 app.use("/message", messageRouter)
 
-app.listen(port, function (err) {
+const server = app.listen(port, function (err) {
   if (err) {
     console.log("Error " + err);
     return;
@@ -53,4 +54,11 @@ app.listen(port, function (err) {
   }
 });
 
-// deploye
+const io = require("socket.io")(server, {
+  pingTimeout: 60000,
+  cors: {origin: "http://localhost:3000"}
+})
+
+io.on("connection", (socket)=>{
+  console.log("Connected to socket.io")
+})
