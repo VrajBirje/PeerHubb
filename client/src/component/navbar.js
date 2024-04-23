@@ -12,6 +12,7 @@ export const Navbar=(props)=>{
    
     // console.log("Value of prop "+props.allCookies.Cookies);
     console.log(props.login);
+    
 
     let l1;
     let l2;

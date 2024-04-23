@@ -13,7 +13,9 @@ const path = require("path");
 // set engine ejs in form of key and value
 app.set("view engine", "ejs");
 
-app.use(cors());
+app.use(cors(
+  // {origin:"http://localhost:3000/"}
+));
 app.use(cookies());
 
 // For Views Folder

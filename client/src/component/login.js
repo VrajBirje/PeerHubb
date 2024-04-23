@@ -45,7 +45,7 @@ export const Login = (props) => {
     // console.log(response);
 
     const data = await response.json();
-
+    console.log(data)
     setCookie("token", data.cookie);
 
     if (response.status === 200) {

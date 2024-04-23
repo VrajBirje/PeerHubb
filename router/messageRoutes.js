@@ -5,7 +5,7 @@ const {sendMessage, allMessages} = require("../controller/messageController")
 const router = express.Router();
 
 router.route("/").post(Authenticate, sendMessage);
-router.route("/:chatId").get(Authenticate, allMessages)
+router.route("/:chatId").post(Authenticate, allMessages)
 
 
 module.exports = router
