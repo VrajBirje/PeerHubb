@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Url } from "../constants/link";
+import { RiBook2Line } from "react-icons/ri";
+import { LuPen } from "react-icons/lu";
+import notes from "../asset/images/notes.png"
+import questionP from "../asset/images/questionP.png"
+import otherDocs from "../asset/images/otherp.png"
+import { FaFilePdf } from "react-icons/fa6";
 
 export function Library() {
   const [books, setbooks] = useState([]);
@@ -43,11 +49,150 @@ export function Library() {
   useEffect(() => {
     callaboutPage();
   }, []);
-  useEffect(() => {}, [books]);
+  useEffect(() => { }, [books]);
 
   return (
     <div>
       {/* Hello world */}
+      <div className="w-[100%] flex justify-center pb-5">
+        <div className="w-[90%] flex flex-col gap-5">
+          <div className="flex items-center gap-2 pt-8">
+            <RiBook2Line size={32} />
+            <div className="flex flex-col">
+              <span className="text-xl font-semibold">E-Library</span>
+              <span className="text-[10px]">
+                Publish and Access Educational resources in PDF format
+              </span>
+            </div>
+          </div>
+
+          <div className="w-[100%] flex justify-between items-center shadow-md px-10 py-4 rounded-md">
+            <span className="font-semibold">Publish a PDF</span>
+            <label className="w-max border-[#FFD700] font-semibold bg-[#FFD700] hover:bg-[#ffd45d] hover:text-white py-[6px] inline-block cursor-pointer px-4  rounded-md">
+              {/* <input type="file" className="w-max hidden  bg-red-100 " /> */}
+              <Link to="/library-from">Upload</Link>
+            </label>
+          </div>
+
+          <div className="w-[100%] flex flex-col  shadow-md p-10 rounded-md gap-5">
+            <span className="font-semibold text-[16px] flex justify-start">Library Resources</span>
+            <div className="flex max-md:flex-col gap-10 justify-between md:px-10">
+              <div className="flex flex-col   w-[100%]">
+                <span>Type:</span>
+                <select
+                  type="text"
+                  placeholder="Type"
+                  className="border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm"
+                  onChange={(e) => setype(e.target.value)}
+                  defaultValue={type}
+                >
+                  <option>none</option>
+                  <option>Answers</option>
+                  <option>Notes</option>
+                  <option>Assignment</option>
+                  <option>Question Paper</option>
+                  <option>Book</option>
+                </select>
+              </div>
+              <div className="flex flex-col   w-[100%]">
+                <span>Semester:</span>
+                <select
+                  type="text"
+                  placeholder="Heading"
+                  onChange={(e) => setsemester(e.target.value)}
+                  defaultValue={semester}
+                  className="border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm"
+                >
+                  <option>none</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="flex w-[100%] justify-start md:px-10">
+              <button onClick={filter} className=" w-max bg-[#FFD700] text-black hover:border-black hover:bg-white font-bold border-[1px] rounded-md py-1 px-4 text-[14px]">
+                Filter
+              </button>
+            </div>
+            <div className="grid grid-cols-2 gap-5">
+              {books.map((y) => (
+                <div key={y.pdfname} className="flex flex-col justify-start items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-full">
+                  <FaFilePdf size={20} />
+                  <h5 className="font-semibold">{y.pdfname}</h5>
+                  <p className="text-sm">Subject: {y.subject}</p>
+                  <p className="text-sm">Semester: {y.semester}</p>
+                  <a href={y.path} target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
+                </div>
+              ))}
+              <div className="flex flex-col justify-start items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-full">
+                  <FaFilePdf size={20} />
+                  <h5 className="font-semibold">y.pdfname</h5>
+                  <p className="text-sm">Subject: y.pdfname</p>
+                  <p className="text-sm">Semester: y.pdfname</p>
+                  <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
+                </div>
+              <div className="flex flex-col justify-start items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-full">
+                  <FaFilePdf size={20} />
+                  <h5 className="font-semibold">y.pdfname</h5>
+                  <p className="text-sm">Subject: y.pdfname</p>
+                  <p className="text-sm">Semester: y.pdfname</p>
+                  <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
+                </div>
+              <div className="flex flex-col justify-start items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-full">
+                  <FaFilePdf size={20} />
+                  <h5 className="font-semibold">y.pdfname</h5>
+                  <p className="text-sm">Subject: y.pdfname</p>
+                  <p className="text-sm">Semester: y.pdfname</p>
+                  <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
+                </div>
+              <div className="flex flex-col justify-start items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-full">
+                  <FaFilePdf size={20} />
+                  <h5 className="font-semibold">y.pdfname</h5>
+                  <p className="text-sm">Subject: y.pdfname</p>
+                  <p className="text-sm">Semester: y.pdfname</p>
+                  <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
+                </div>
+              <div className="flex flex-col justify-start items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-full">
+                  <FaFilePdf size={20} />
+                  <h5 className="font-semibold">y.pdfname</h5>
+                  <p className="text-sm">Subject: y.pdfname</p>
+                  <p className="text-sm">Semester: y.pdfname</p>
+                  <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
+                </div>
+            </div>
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 max-sm:grid-cols-1 gap-10 md:px-10">
+              <div className="flex flex-col justify-center items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-[100%]">
+                <img src={notes} className="h-[50px] w-[50px]" />
+                <span className="font-semibold">Notes</span>
+                <Link to="/" className="text-blue-500">View PDFs</Link>
+              </div>
+              <div className="flex flex-col justify-center items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-[100%]">
+                <img src={questionP} className="h-[50px] w-[50px]" />
+                <span className="font-semibold">Question Papers</span>
+                <Link to="/" className="text-blue-500">View PDFs</Link>
+              </div>
+              <div className="flex flex-col justify-center items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-[100%]">
+                <LuPen size={32} />
+                <span className="font-semibold">Answer Papers</span>
+                <Link to="/" className="text-blue-500">View PDFs</Link>
+              </div>
+              <div className="flex flex-col justify-center items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-[100%]">
+                <img src={otherDocs} className="h-[50px] w-[50px]" />
+                <span className="font-semibold">Notes</span>
+                <Link to="/" className="text-blue-500">Other Documents</Link>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
       <section className="u-clearfix u-section-1" id="carousel_33aa">
         <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
           <div className="u-clearfix u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-layout-wrap u-layout-wrap-1">
@@ -57,7 +202,7 @@ export function Library() {
                   <div className="u-container-layout u-container-layout-1">
                     <h4 className="u-text u-text-1"> Digital Library</h4>
                     <p className="u-text u-text-2">
-                    A Digital library cuts short the time and effort one would put into visiting a conventional library and finding the right book
+                      A Digital library cuts short the time and effort one would put into visiting a conventional library and finding the right book
                     </p>
                   </div>
                 </div>
@@ -92,7 +237,7 @@ export function Library() {
                       </svg>
                     </span>
                     <p className="u-text u-text-3">
-                    When in doubt go to the library or Doubt Mate.
+                      When in doubt go to the library or Doubt Mate.
                       <span style={{ fontStyle: "italic" }} />
                     </p>
                   </div>
@@ -131,8 +276,8 @@ export function Library() {
                     <br />
                     <span style={{ fontSize: "1.125rem" }} />
                     <span style={{ fontSize: "1.125rem" }}>
-                    Books play a very important role in everyone’s life, especially in a students’ life. They are our best friends because they inspire us to do great things in life and overcome our failures. We learn a lot of things from them. Books are our best companions as they provide us knowledge unconditionally without asking anything in return.
-                     Friendship with good books makes you a good person.
+                      Books play a very important role in everyone’s life, especially in a students’ life. They are our best friends because they inspire us to do great things in life and overcome our failures. We learn a lot of things from them. Books are our best companions as they provide us knowledge unconditionally without asking anything in return.
+                      Friendship with good books makes you a good person.
                     </span>
                     <br />
                     <br />
@@ -144,7 +289,7 @@ export function Library() {
                   <h4 className="u-text u-text-3">
                     <span style={{ fontWeight: 700 }} className="u-text-black">
                       {" "}
-                    Question Paper
+                      Question Paper
                     </span>
                     <br />
                     <span style={{ fontSize: "1.125rem" }}>
@@ -165,7 +310,7 @@ export function Library() {
                     <br />
                     <span style={{ fontSize: "1.125rem" }}>
                       {" "}
-                      Many of us struggle to make notes that are meaningful when we need to refer back to them, but now you can check your notes here or you can publish your notes also. 
+                      Many of us struggle to make notes that are meaningful when we need to refer back to them, but now you can check your notes here or you can publish your notes also.
                     </span>
                   </h4>
                 </div>
@@ -186,7 +331,7 @@ export function Library() {
                       defaultValue={type}
                     >
                       <option disabled selected>
-                        Type 
+                        Type
                       </option>
                       <option>none</option>
                       <option>Answers</option>
@@ -206,7 +351,7 @@ export function Library() {
                       defaultValue={semester}
                     >
                       <option disabled selected hidden>
-                       Semester
+                        Semester
                       </option>
                       <option>none</option>
                       <option>1</option>
@@ -227,12 +372,12 @@ export function Library() {
                 </div>
               </div>
               <div className="u-container-style u-list-item u-palette-3-light-1 u-repeater-item u-list-item-4">
-               <button className="some-edit" onClick={filter}>
-                <div className="u-container-layout u-similar-container u-container-layout-4">
-                  <h4 className="u-text u-text-default u-text-4">
-                 Submit 
-                  </h4>
-                </div>
+                <button className="some-edit" onClick={filter}>
+                  <div className="u-container-layout u-similar-container u-container-layout-4">
+                    <h4 className="u-text u-text-default u-text-4">
+                      Submit
+                    </h4>
+                  </div>
                 </button>
               </div>
               <div className="u-container-style u-list-item u-palette-3-light-1 u-repeater-item u-list-item-5">
@@ -275,7 +420,7 @@ export function Library() {
           </div>
         </div>
       </section>
-    </div>
+    </div >
   );
 }
 
