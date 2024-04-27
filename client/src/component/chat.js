@@ -263,7 +263,9 @@ import { Url } from "../constants/link";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { FaBars } from "react-icons/fa6";
 import { IoCloseCircleOutline } from "react-icons/io5";
+import { useTheme } from './ThemeContext';
 export default function Chat({ user }) {
+    const { theme, changeTheme } = useTheme();
     const [chats, setChats] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedChat, setSelectedChat] = useState({});
@@ -436,7 +438,7 @@ export default function Chat({ user }) {
 
     return (
         <div
-            className="chatcontainer"
+            className={`${theme === 'dark' ? ' bg-[#121212]':' bg-white'} chatcontainer`}
             style={{ width: "100vw", display: "flex", alignItems: "center", position: "relative", }}
         >
             <div
@@ -446,7 +448,7 @@ export default function Chat({ user }) {
                 {
                     openNav && (
                         <div className="hidden max-[972px]:block">
-                            <IoCloseCircleOutline size={24} onClick={() => setOpenNav(false)} />
+                            <IoCloseCircleOutline size={24} className="text-black" onClick={() => setOpenNav(false)} />
                         </div>
                     )
                 }
@@ -585,13 +587,13 @@ export default function Chat({ user }) {
                     {selectedChat && <p>{selectedChat.chatName}</p>}
                     {!openNav && (
                         <div className="hidden max-[972px]:block">
-                            <FaBars size={24} onClick={() => setOpenNav(true)} />
+                            <FaBars size={24} className="text-black" onClick={() => setOpenNav(true)} />
                         </div>
                     )}
                     {
                         openNav && (
                             <div className="hidden max-[972px]:block">
-                                <IoCloseCircleOutline size={24} onClick={() => setOpenNav(false)} />
+                                <IoCloseCircleOutline  className="text-black" size={24} onClick={() => setOpenNav(false)} />
                             </div>
                         )
                     }
@@ -634,7 +636,7 @@ export default function Chat({ user }) {
                         type="text"
                         value={messageSend}
                         onChange={(e) => setMessageSend(e.target.value)}
-                        className="border border-violet-500 w-[90%] rounded-md p-2"
+                        className={`${theme === 'dark' ? ' bg-[#262525] text-white':' bg-white'} border border-violet-500 w-[90%] rounded-md p-2`}
                         placeholder="Enter Your Messsage"
                     />
                     <button

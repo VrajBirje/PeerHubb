@@ -2,7 +2,7 @@ import "../asset/css/explore-home.css";
 // import "../asset/css/explore-new.css";
 import Loading from "./loading";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import styles from "../asset/css/explore-nav.module.css";
 import { LuArrowUpCircle } from "react-icons/lu";
@@ -14,11 +14,14 @@ import backgroundImage from "../asset/images/backgroundImage.jpg";
 import Cookies from "universal-cookie";
 
 import { Url } from "../constants/link";
+import { useTheme } from './ThemeContext';
 
 export function Explore() {
   const [loading, setLoading] = useState([true]);
   const { addToast } = useToasts();
   const [posts, setPosts] = useState([]);
+  const { theme, changeTheme } = useTheme();
+  const navigate = useNavigate()
   const topArray = [
     "Explore",
     "Problem",
@@ -40,6 +43,7 @@ export function Explore() {
       const res = await fetch(url, { method: "GET" });
 
       const data = await res.json();
+      console.log(data.message);
       setPosts(data.message);
       setLoading(false);
       if (!res.status === 200) {
@@ -498,7 +502,7 @@ export function Explore() {
     //   </div> */}
     // </section>
     <>
-      <div className=" h-[160px] w-full p-1 flex justify-center">
+      <div className={`${theme === 'dark' ? 'text-white bg-[#121212]':'text-black bg-white'} h-[160px] w-full flex justify-center`}>
         <img
           src={backgroundImage}
           className="w-full h-[160px] opacity-25"
@@ -517,43 +521,43 @@ export function Explore() {
           >
             <div className="flex gap-2 md:px-2 justify-center items-center max-[778px]:justify-start">
               <button
-                className="text-[#808080] bg-white hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap"
+                className={`${ theme === 'dark' ? 'text-white bg-gray-600' :'text-[#808080] bg-white'}  hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap`}
               >
                 Explore
               </button>
               <button
                 onClick={problem}
-                className="text-[#808080] bg-white hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap"
+                className={`${ theme === 'dark' ? 'text-white bg-gray-600' :'text-[#808080] bg-white'} hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap`}
               >
                 Problem
               </button>
               <button
                 onClick={gd}
-                className="text-[#808080] bg-white hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap"
+                className={`${ theme === 'dark' ? 'text-white bg-gray-600' :'text-[#808080] bg-white'} hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap`}
               >
                 Group Discussion
               </button>
               <button
                 onClick={study}
-                className="text-[#808080] bg-white hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap"
+                className={`${ theme === 'dark' ? 'text-white bg-gray-600' :'text-[#808080] bg-white'} hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap`}
               >
                 Study Guide
               </button>
               <button
                 onClick={mostvoted}
-                className="text-[#808080] bg-white hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap"
+                className={`${ theme === 'dark' ? 'text-white bg-gray-600' :'text-[#808080] bg-white'} hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap`}
               >
                 Most Voted
               </button>
               <button
                 onClick={feedback}
-                className="text-[#808080] bg-white hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap"
+                className={`${ theme === 'dark' ? 'text-white bg-gray-600' :'text-[#808080] bg-white'} hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap`}
               >
                 Feedback and Support
               </button>
               <button
                 onClick={newtoold}
-                className="text-[#808080] bg-white hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap"
+                className={`${ theme === 'dark' ? 'text-white bg-gray-600' :'text-[#808080] bg-white'} hover:bg-[#FFD700] hover:text-white text-[12px] font-semibold py-1 px-4 border-[1px] rounded-[40px] whitespace-nowrap`}
               >
                 New to Old
               </button>
@@ -561,12 +565,12 @@ export function Explore() {
           </div>
         </div>
       </div>
-      <div className="p-2 flex flex-col justify-center items-center w-[100%] max-[370px]:mt-10">
+      <div className={`${theme === 'dark' ? 'text-white bg-[#121212]':'text-black bg-white'} p-2 flex flex-col justify-center items-center w-[100%] max-[370px]:mt-10`}>
         <div className="flex justify-between items-center md:w-[90%] w-[100%] px-2 ">
           <p className="text-[20px] font-semibold">New To Old:</p>
           <Link
             to="/create-post"
-            className="flex justify-center items-center gap-2 px-4 h-[30px] border-[1px] rounded-[6px] border-black  hover:border-[#FFD700] "
+            className={`flex justify-center items-center gap-2 px-4 h-[30px] border-[1px] rounded-[6px]  hover:border-[#FFD700] ${theme === 'dark' ? 'border-white':'border-black'}`}
           >
             <FaRegPenToSquare size={16} />
             <p>Create Post</p>
@@ -577,7 +581,7 @@ export function Explore() {
             <div className="grid  max-md:grid-col-1 lg:grid-cols-3 md:grid-cols-2 gap-20  w-full">
               {posts?.map((item, index) => (
                 index !== 0 &&
-                <div key={index} className="shadow-lg p-2 rounded-md w-[100%]">
+                <div key={index} className={`${theme === 'dark' ? ' bg-[#262525]':'bg-white'} shadow-lg p-2 rounded-md w-[100%]`}>
                   <div className="flex justify-between">
                     <div className="flex gap-2 items-center">
                       <TbUserSquareRounded
@@ -604,9 +608,9 @@ export function Explore() {
                   </div>
                   <div className="flex justify-between items-center">
                     <p className="text-[10px] font-semibold">
-                      Answered by John Terry
+                      {item.status === true ? 'Solved':'To be solved'}
                     </p>
-                    <button className="bg-[#FFD700] text-black hover:border-black hover:bg-white font-bold border-[1px] rounded-md py-1 px-4 text-[14px]">
+                    <button className="bg-[#FFD700] text-black hover:border-black hover:bg-white font-bold border-[1px] rounded-md py-1 px-4 text-[14px]" target="_blank" onClick={()=>navigate(`/post/${item._id}`)}>
                       Open It
                     </button>
                   </div>

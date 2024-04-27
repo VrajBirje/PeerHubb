@@ -6,14 +6,10 @@ import img1 from '../asset/images/img1.png'
 
 import { Link } from "react-router-dom";
 
-
-
-
-
-
+import { useTheme } from './ThemeContext';
 export function Home() {
 
-
+  const { theme, changeTheme } = useTheme();
 
 
 
@@ -93,7 +89,7 @@ export function Home() {
       </div>
     </div>
   </section> */}
-      <div className="w-[100%] h-[85vh] flex flex-row max-md:flex-col md:justify-center justify-between items-center max-md:p-2">
+      <div className={`w-[100%] h-[85vh] flex flex-row max-md:flex-col md:justify-center justify-between items-center max-md:p-2 ${theme === 'dark' ? 'text-white bg-[#121212]':'text-black bg-white'}`}>
         <div className="flex flex-col h-[60vh]  justify-between">
           <div className="md:w-[60%]">
             <p className="md:text-[50px] text-[30px] font-bold text-[#FFD700] ">
@@ -105,7 +101,7 @@ export function Home() {
             </p>
           </div>
           <div>
-            <button className="border border-black rounded-[5px] px-5 py-2 hover:bg-[#FFD700] hover:border-none">
+            <button className={`border ${theme === 'dark' ? 'border-white':'border-black'} rounded-[5px] px-5 py-2 hover:bg-[#FFD700] hover:border-none`}>
               Learn More
             </button>
           </div>

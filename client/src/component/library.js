@@ -7,12 +7,12 @@ import notes from "../asset/images/notes.png"
 import questionP from "../asset/images/questionP.png"
 import otherDocs from "../asset/images/otherp.png"
 import { FaFilePdf } from "react-icons/fa6";
-
+import { useTheme } from './ThemeContext';
 export function Library() {
   const [books, setbooks] = useState([]);
   const [type, setype] = useState("none");
   const [semester, setsemester] = useState("none");
-
+  const { theme, changeTheme } = useTheme();
   const filter = async () => {
     const fromdata = new FormData();
     fromdata.append("type", type);
@@ -54,27 +54,27 @@ export function Library() {
   return (
     <div>
       {/* Hello world */}
-      <div className="w-[100%] flex justify-center pb-5">
+      <div className={`w-[100%] flex justify-center pb-5 ${theme === 'dark' ? 'text-white bg-[#121212]':'text-black bg-white'}`}>
         <div className="w-[90%] flex flex-col gap-5">
           <div className="flex items-center gap-2 pt-8">
             <RiBook2Line size={32} />
             <div className="flex flex-col">
               <span className="text-xl font-semibold">E-Library</span>
-              <span className="text-[10px]">
+              <span className="text-[10px] ">
                 Publish and Access Educational resources in PDF format
               </span>
             </div>
           </div>
 
-          <div className="w-[100%] flex justify-between items-center shadow-md px-10 py-4 rounded-md">
+          <div className={`${theme === 'dark' ? ' bg-[#262525]':'bg-white'} w-[100%] flex justify-between items-center shadow-md px-10 py-4 rounded-md`}>
             <span className="font-semibold">Publish a PDF</span>
             <label className="w-max border-[#FFD700] font-semibold bg-[#FFD700] hover:bg-[#ffd45d] hover:text-white py-[6px] inline-block cursor-pointer px-4  rounded-md">
               {/* <input type="file" className="w-max hidden  bg-red-100 " /> */}
-              <Link to="/library-from">Upload</Link>
+              <Link to="/library-from" className="text-white">Upload</Link>
             </label>
           </div>
 
-          <div className="w-[100%] flex flex-col  shadow-md p-10 rounded-md gap-5">
+          <div className={`${theme === 'dark' ? ' bg-[#262525]':'bg-white'} w-[100%] flex flex-col  shadow-md p-10 rounded-md gap-5`}>
             <span className="font-semibold text-[16px] flex justify-start">Library Resources</span>
             <div className="flex max-md:flex-col gap-10 justify-between md:px-10">
               <div className="flex flex-col   w-[100%]">
@@ -82,7 +82,7 @@ export function Library() {
                 <select
                   type="text"
                   placeholder="Type"
-                  className="border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm"
+                  className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm`}
                   onChange={(e) => setype(e.target.value)}
                   defaultValue={type}
                 >
@@ -101,7 +101,7 @@ export function Library() {
                   placeholder="Heading"
                   onChange={(e) => setsemester(e.target.value)}
                   defaultValue={semester}
-                  className="border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm"
+                  className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm`}
                 >
                   <option>none</option>
                   <option>1</option>
@@ -123,7 +123,7 @@ export function Library() {
             </div>
             <div className="grid grid-cols-2 gap-5">
               {books.map((y) => (
-                <div key={y.pdfname} className="flex flex-col justify-start items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-full">
+                <div key={y.pdfname} className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-start items-center  p-5 px-10 rounded-[20px] w-full`}>
                   <FaFilePdf size={20} />
                   <h5 className="font-semibold">{y.pdfname}</h5>
                   <p className="text-sm">Subject: {y.subject}</p>
@@ -131,35 +131,35 @@ export function Library() {
                   <a href={y.path} target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
                 </div>
               ))}
-              <div className="flex flex-col justify-start items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-full">
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-start items-center  p-5 px-10 rounded-[20px] w-full`}>
                   <FaFilePdf size={20} />
                   <h5 className="font-semibold">y.pdfname</h5>
                   <p className="text-sm">Subject: y.pdfname</p>
                   <p className="text-sm">Semester: y.pdfname</p>
                   <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
                 </div>
-              <div className="flex flex-col justify-start items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-full">
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-start items-center  p-5 px-10 rounded-[20px] w-full`}>
                   <FaFilePdf size={20} />
                   <h5 className="font-semibold">y.pdfname</h5>
                   <p className="text-sm">Subject: y.pdfname</p>
                   <p className="text-sm">Semester: y.pdfname</p>
                   <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
                 </div>
-              <div className="flex flex-col justify-start items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-full">
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-start items-center p-5 px-10 rounded-[20px] w-full`}>
                   <FaFilePdf size={20} />
                   <h5 className="font-semibold">y.pdfname</h5>
                   <p className="text-sm">Subject: y.pdfname</p>
                   <p className="text-sm">Semester: y.pdfname</p>
                   <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
                 </div>
-              <div className="flex flex-col justify-start items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-full">
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-start items-center  p-5 px-10 rounded-[20px] w-full`}>
                   <FaFilePdf size={20} />
                   <h5 className="font-semibold">y.pdfname</h5>
                   <p className="text-sm">Subject: y.pdfname</p>
                   <p className="text-sm">Semester: y.pdfname</p>
                   <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
                 </div>
-              <div className="flex flex-col justify-start items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-full">
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-start items-center  p-5 px-10 rounded-[20px] w-full`}>
                   <FaFilePdf size={20} />
                   <h5 className="font-semibold">y.pdfname</h5>
                   <p className="text-sm">Subject: y.pdfname</p>
@@ -167,23 +167,23 @@ export function Library() {
                   <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
                 </div>
             </div>
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 max-sm:grid-cols-1 gap-10 md:px-10">
-              <div className="flex flex-col justify-center items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-[100%]">
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 max-sm:grid-cols-1 gap-10 ">
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-center items-center  p-5 px-10 rounded-[20px] w-[100%]`}>
                 <img src={notes} className="h-[50px] w-[50px]" />
                 <span className="font-semibold">Notes</span>
                 <Link to="/" className="text-blue-500">View PDFs</Link>
               </div>
-              <div className="flex flex-col justify-center items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-[100%]">
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-center items-center  p-5 px-10 rounded-[20px] w-[100%]`}>
                 <img src={questionP} className="h-[50px] w-[50px]" />
                 <span className="font-semibold">Question Papers</span>
                 <Link to="/" className="text-blue-500">View PDFs</Link>
               </div>
-              <div className="flex flex-col justify-center items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-[100%]">
-                <LuPen size={32} />
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-center items-center  p-5 px-10 rounded-[20px] w-[100%]`}>
+                <LuPen size={32} className="text-black" />
                 <span className="font-semibold">Answer Papers</span>
                 <Link to="/" className="text-blue-500">View PDFs</Link>
               </div>
-              <div className="flex flex-col justify-center items-center bg-[#E5E7EB] p-5 px-10 rounded-[20px] w-[100%]">
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-center items-center  p-5 px-10 rounded-[20px] w-[100%]`}>
                 <img src={otherDocs} className="h-[50px] w-[50px]" />
                 <span className="font-semibold">Notes</span>
                 <Link to="/" className="text-blue-500">Other Documents</Link>

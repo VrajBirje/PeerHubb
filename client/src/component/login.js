@@ -7,12 +7,13 @@ import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import { Url } from "../constants/link";
-
+import { useTheme } from './ThemeContext';
 export const Login = (props) => {
   const [cookies, setCookie] = useCookies("");
   const [loggingIn, setLoggingIn] = useState(false);
   const { addToast } = useToasts();
   const history = useNavigate();
+  const { theme, changeTheme } = useTheme();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -97,9 +98,9 @@ export const Login = (props) => {
     //     </div>
     //   </div>
     // </div>
-    <div className="w-[100%]  h-[90vh] flex justify-center items-center" style={{backgroundImage: "url('https://img.freepik.com/premium-vector/problem-solution-business-solving-look-ideas-with-concept-teamwork-can-use-web-banner-background-flat-illustration_2175-2898.jpg?w=900')",backgroundColor: "rgba(255, 255, 255, 0.2)"}}>
+    <div className={`${theme === 'dark' ? ' bg-[#121212] text-white':' bg-white'} w-[100%]  h-[90vh] flex justify-center items-center`} style={{backgroundImage: "url('https://img.freepik.com/premium-vector/problem-solution-business-solving-look-ideas-with-concept-teamwork-can-use-web-banner-background-flat-illustration_2175-2898.jpg?w=900')"}} >
       <div className="">
-        <div className="flex flex-col p-10 shadow-xl rounded-[30px]" style={{backgroundColor:"white"}}>
+        <div className={`${theme === 'dark' ? ' bg-[#262525]':'bg-white'} flex flex-col p-10 shadow-xl rounded-[30px]`}>
           <p style={{fontWeight:"400"}} className="font-semibold text-[20px]">SIGN IN</p>
           <form method="POST" className="flex flex-col gap-5 justify-center items-center">
             <input
@@ -109,7 +110,7 @@ export const Login = (props) => {
               id="email"
               value={user.email}
               onChange={handleInputs}
-              className="border border-[#C1BBEB] rounded-md w-[100%] p-2"
+              className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} border border-[#C1BBEB] rounded-md w-[100%] p-2`}
             />
             <input
               type="password"
@@ -118,7 +119,7 @@ export const Login = (props) => {
               id="password"
               value={user.password}
               onChange={handleInputs}
-              className="border border-[#C1BBEB] rounded-md w-[100%] p-2"
+              className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} border border-[#C1BBEB] rounded-md w-[100%] p-2`}
             />
             <button onClick={Postdata} disabled={loggingIn} className="px-4 py-2 bg-[#FFD700] w-max rounded-md font-semibold">
               {loggingIn ? "Loging in.." : "Login"}

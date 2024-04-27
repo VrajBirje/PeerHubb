@@ -198,11 +198,11 @@ import { useEffect, useState } from "react";
 // import "../asset/css/rank.css";
 import Loading from "./loading";
 import { Url } from "../constants/link";
-
+import { useTheme } from './ThemeContext';
 export const Rank = () => {
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
-
+    const { theme, changeTheme } = useTheme();
     const call = async () => {
         try {
             const response = await fetch(Url + '/ranking', {
@@ -248,7 +248,7 @@ export const Rank = () => {
         return <Loading />;
     }
     return (
-        <div className="w-[100%] flex flex-col justify-center items-center">
+        <div className={`w-[100%] h-[90vh] flex flex-col justify-center items-center ${theme === 'dark' ? 'text-white bg-[#121212]':'text-black bg-white'}`}>
             <div className="w-[90%] flex flex-col gap-4">
                 <div>
                     <p className="text-[20px] font-semibold">Top Performer</p>
@@ -265,7 +265,7 @@ export const Rank = () => {
                         </thead>
                         <tbody className="h-10">
                             {users.map((user, index) => (
-                                <tr className="hover:bg-[#f7f3e2]  border-b border-black py-2" style={{ padding: "0 10px" }} key={user._id}>
+                                <tr className={`${theme === 'dark' ? ' bg-[#262525] hover:bg-[#2d2b2b] text-white':'bg-white hover:bg-[#f7f3e2] text-black'}   border-b border-black py-2`} style={{ padding: "0 10px" }} key={user._id}>
                                     <td style={{ paddingTop: "10px", paddingBottom: "10px" }} className="text-left pl-10">{user.username}</td>
                                     <td className="text-left font-bold text-[#808080]">#{index + 1}</td>
                                     <td className="text-left">{user.point}</td>
