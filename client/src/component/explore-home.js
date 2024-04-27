@@ -502,13 +502,13 @@ export function Explore() {
     //   </div> */}
     // </section>
     <>
-      <div className={`${theme === 'dark' ? 'text-white bg-[#121212]':'text-black bg-white'} h-[160px] w-full flex justify-center`}>
+      <div className={`${theme === 'dark' ? 'text-white bg-[#121212]':'text-black bg-white'} h-[160px] max-sm:h-[200px] max-[370px]:h-[250px] w-full flex justify-center pb-10 `}>
         <img
           src={backgroundImage}
-          className="w-full h-[160px] opacity-25"
+          className="w-full h-[160px] max-sm:h-[200px] max-[370px]:h-[250px] opacity-25"
           alt="image"
         />
-        <div className="flex flex-col absolute top-1 justify-center">
+        <div className="flex flex-col absolute top-1 justify-center pb-10">
           <div className=" text-center flex justify-center">
             <p className="text-[24px] text-center font-bold text-wrap w-[600px] max-[590px]:w-[90%]">
               Dive Deep, Discover Answers: Navigate Doubts, Illuminate Knowledge
@@ -516,7 +516,7 @@ export function Explore() {
             </p>
           </div>
           <div
-            className="w-screen overflow-x-auto pb-2 px-2"
+            className= {`${theme === 'dark' ? 'text-white ':'text-black '} w-screen overflow-x-auto py-2 px-2 `}
             style={{ overflowX: "auto" }}
           >
             <div className="flex gap-2 md:px-2 justify-center items-center max-[778px]:justify-start">
@@ -565,7 +565,7 @@ export function Explore() {
           </div>
         </div>
       </div>
-      <div className={`${theme === 'dark' ? 'text-white bg-[#121212]':'text-black bg-white'} p-2 flex flex-col justify-center items-center w-[100%] max-[370px]:mt-10`}>
+      <div className={`${theme === 'dark' ? 'text-white bg-[#121212]':'text-black bg-white'} p-2 flex flex-col justify-center items-center w-[100%] h-max max-md:pb-44`}>
         <div className="flex justify-between items-center md:w-[90%] w-[100%] px-2 ">
           <p className="text-[20px] font-semibold">New To Old:</p>
           <Link

@@ -330,12 +330,13 @@ import { useNavigate } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { Url } from "../constants/link";
 import { FaRegPenToSquare } from "react-icons/fa6";
-
+import { useTheme } from './ThemeContext';
 export function CreatePost() {
   const [buttonIn, setbuttonIn] = useState(false);
   const { addToast } = useToasts();
   const [username, setUsername] = useState("");
   const history = useNavigate();
+  const { theme, changeTheme } = useTheme();
   const [selectedOption, setSelectedOption] = useState('Username'); // Default value is 'Username'
 
   // Handler function to update the selected value
@@ -518,13 +519,13 @@ export function CreatePost() {
     // </div>
 
     // New Ui
-    <div className="w-[100%] flex justify-center items-center">
+    <div className={`${theme === 'dark' ? ' bg-[#121212] text-white':' bg-white'} h-[90vh] w-[100%] flex justify-center items-center`}>
       <div className="flex flex-col w-[80%]">
         <div className="flex gap-2 justify-start items-center">
           <FaRegPenToSquare size={24} />
           <p className="font-semibold text-[20px]">Create Post</p>
         </div>
-        <div className="p-10 shadow-xl rounded-md flex flex-col gap-4">
+        <div className={`${theme === 'dark' ? ' bg-[#262525]':'bg-white'} p-10 shadow-xl rounded-md flex flex-col gap-4`}>
           <div className="flex max-md:flex-col justify-between md:gap-10">
             <div className="w-[100%]">
               <div className="flex md:w-[75%] justify-between">
@@ -560,7 +561,7 @@ export function CreatePost() {
                 <input
                   type="text"
                   placeholder="Heading"
-                  className="border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm w-[70%]"
+                  className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm w-[70%]`}
                 />
               </div>
 
@@ -569,7 +570,7 @@ export function CreatePost() {
                 <select
                   type="text"
                   placeholder="Heading"
-                  className="border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm w-[70%]"
+                  className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm w-[70%]`}
                   onChange={(e) => settype(e.target.value)} defaultValue={value}
                   required
                 >
@@ -588,7 +589,7 @@ export function CreatePost() {
                 <input
                   type="text"
                   placeholder="Subject"
-                  className="border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm w-[70%]"
+                  className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm w-[70%]`}
                 />
               </div>
               <div className="flex justify-between items-center  w-[100%]">
@@ -596,7 +597,7 @@ export function CreatePost() {
                 <input
                   type="file"
                   placeholder="Subject"
-                  className="border border-dashed border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm w-[70%]"
+                  className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} border border-dashed border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm w-[70%]`}
                   aria-label="Upload file"
                 />
               </div>
@@ -606,7 +607,7 @@ export function CreatePost() {
           <div>
             <textarea
               placeholder="Message"
-              className=" w-[100%] border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm h-24 "
+              className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} w-[100%] border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm h-24 `}
             ></textarea>
           </div>
 

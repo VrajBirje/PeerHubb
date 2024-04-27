@@ -10,10 +10,12 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import { TbUserSquareRounded } from "react-icons/tb";
 import { LuArrowUpCircle, LuArrowDownCircle } from "react-icons/lu";
 import { CgFileAdd } from "react-icons/cg";
+import { useTheme } from './ThemeContext';
 const EachPost = (props) => {
   const [buttonIn, setbuttonIn] = useState(false);
   const [username, setUsername] = useState("");
   const [userid, setUserid] = useState("");
+  const { theme, changeTheme } = useTheme();
   const callPost = async () => {
     const cookies = new Cookies();
 
@@ -167,9 +169,9 @@ const EachPost = (props) => {
 
   return (
     <>
-      <div className="w-[100%] flex justify-center pt-10 max-md:px-4">
-        <div className="flex flex-col  md:w-[90%] pb-5">
-          <div className="shadow-lg rounded-md w-[100%] p-5 md:p-10">
+      <div className={`${theme === 'dark' ? ' bg-[#121212] text-white':' bg-white text-black'} w-[100%] flex justify-center pt-10 max-md:px-4`}>
+        <div className="flex flex-col  md:w-[90%] gap-5 pb-5">
+          <div className={`${theme === 'dark' ? ' bg-[#262525]':'bg-white'} shadow-lg rounded-md w-[100%] p-5 md:p-10`}>
             <div className="flex justify-between">
               <div className="flex gap-2 items-center">
                 {posts.avatar ? (
@@ -180,7 +182,7 @@ const EachPost = (props) => {
                 <div className="flex flex-col ">
                   <span className="text-[15px] font-semibold">Anonymous</span>
                   <span className="text-[10px] text-[#808080]">
-                    <span className="text-black  font-semibold">
+                    <span className={`${theme === 'dark' ? ' text-white':'text-black'}   font-semibold`}>
                       Created on:
                     </span>{" "}
                     {formatDate(posts.createdAt)}{" "}
@@ -208,24 +210,24 @@ const EachPost = (props) => {
               <p className="text-[14px]">{posts.description}</p>
             </div>
             <div className="flex justify-end items-center">
-              <button className=" text-black  hover:bg-[#FFD700] border-[1px] border-black rounded-md py-1 px-4 text-[14px]">
+              <button className={`${theme === 'dark' ? ' border-white':'border-black'}   hover:bg-[#FFD700] border-[1px] border-black rounded-md py-1 px-4 text-[14px]`}>
                 Attachment.pdf
               </button>
             </div>
           </div>
-          <div className="shadow-lg rounded-md w-[100%] p-5 md:p-10 flex flex-col gap-6">
+          <div className={`${theme === 'dark' ? ' bg-[#262525]':'bg-white'} shadow-lg rounded-md w-[100%] p-5 md:p-10 flex flex-col gap-6`}>
             <textarea
-              className="border border-[#C1BBEB] h-36 rounded-md p-5 w-[100%]"
+              className={`${theme === 'dark' ? ' text-white bg-[#413f3f]':'text-black'}  border border-[#C1BBEB] h-36 rounded-md p-5 w-[100%]`}
               placeholder="Message"
               value={comment1.comment}
                         onChange={handleInputs}
             ></textarea>
             <div className="w-[100%] flex justify-end">
               <div className="flex gap-4 items-center">
-                  <input onChange={handleInputChange} type="file" className=" text-black  hover:bg-[#FFD700] border-[1px] border-black rounded-md py-1 text-[14px] "/>
+                  <input onChange={handleInputChange} type="file" className={`${theme === 'dark' ? ' text-white':'text-black'} hover:bg-[#FFD700] border-[1px]  rounded-md py-1 text-[14px] `}/>
                 
                 <button   onClick={Postcomment}
-                            disabled={buttonIn} className="bg-[#FFD700] text-black hover:border-black hover:bg-white font-bold border-[1px] rounded-md py-1 px-4 text-[14px]">
+                            disabled={buttonIn} className="bg-[#FFD700]  hover:border-black  font-bold border-[1px] rounded-md py-1 px-4 text-[14px]">
                  {buttonIn ? "Please Wait.." : "Post Answer"}
                 </button>
               </div>
