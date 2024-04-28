@@ -320,7 +320,7 @@ export function Explore() {
     //                 value={item._id}
     //               >
     //                 <img
-    //                   class="iconimg"
+    //                   className="iconimg"
     //                   value={item._id}
     //                   src="https://img.icons8.com/ios-glyphs/344/up--v1.png"
     //                 />
@@ -331,7 +331,7 @@ export function Explore() {
     //                 value={item._id}
     //               >
     //                 <img
-    //                   class="iconimg"
+    //                   className="iconimg"
     //                   value={item._id}
     //                   src="https://img.icons8.com/ios-glyphs/344/down.png"
     //                 />

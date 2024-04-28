@@ -46,7 +46,6 @@ const App = (props) => {
       const cookies = new Cookies();
       const fromdata = new FormData();
       const c = cookies.get('token');
-      console.log(c);
       fromdata.append('cookies', c);
       const response = await fetch(Url + '/verify-user', {
         method: "POST",
@@ -56,9 +55,7 @@ const App = (props) => {
 
       const data = await response.json();
 
-      console.log(response);
       islogin(data.message);
-      console.log(login);
     }
 
 
@@ -90,7 +87,7 @@ const App = (props) => {
           <Route exact path="/my-profile" element={<Userprofile />} />
           <Route exact path="/post/:postId" element={<EachPost setSolved={setSolved} />} />
           <Route exact path="/solved" element={<Solved solved={solved} />} />
-          <Route exact path="/rank" element={<Rank />} />
+          <Route exact path="/rank" element={<Rank login={login} />} />
           <Route exact path="/log-out" element={<Logout login={islogin} />} />
           <Route exact path="/soon" element={<Soon />} />
           <Route exact path="/otp" element={<Otp otpemail={otpemail} />} />

@@ -195,13 +195,15 @@
 // export default Rank;
 
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // import "../asset/css/rank.css";
 import Loading from "./loading";
 import { Url } from "../constants/link";
 
-export const Rank = () => {
+export const Rank = ({login}) => {
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
+    const navigate = useNavigate()
 
     const call = async () => {
         try {
@@ -234,6 +236,7 @@ export const Rank = () => {
             console.log(response)
             if (response.ok) {
                 const chatData = await response.json();
+                navigate("/chat")
                 // Handle the chat data as needed, such as opening a chat window
                 console.log("Chat data:", chatData);
             } else {
@@ -265,16 +268,15 @@ export const Rank = () => {
                         </thead>
                         <tbody className="h-10">
                             {users.map((user, index) => (
-                                <tr className="hover:bg-[#f7f3e2]  border-b border-black py-2" style={{ padding: "0 10px" }} key={user._id}>
+                              <tr className="hover:bg-[#f7f3e2]  border-b border-black py-2" style={{ padding: "0 10px" }} key={user._id}>
                                     <td style={{ paddingTop: "10px", paddingBottom: "10px" }} className="text-left pl-10">{user.username}</td>
                                     <td className="text-left font-bold text-[#808080]">#{index + 1}</td>
                                     <td className="text-left">{user.point}</td>
                                     <td>
-                               <button style={{fontSize:"14px",fontWeight:"bold"}} onClick={() => handleChatButtonClick(user._id)}>Chat</button>
+                               {user._id !== login._id && <button style={{fontSize:"14px",fontWeight:"bold"}} onClick={() => handleChatButtonClick(user._id)}>Chat</button>}
                                   </td>
                                 </tr>
                             ))}
-
                         </tbody>
                     </table>
                 </div>

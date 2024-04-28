@@ -9,7 +9,6 @@ module.exports.Detail= async function(req,res){
     //  let Ans= await Answer.findOne({"problem":id});
 
     console.log("hey");
-    console.log(req.body);
     return res.status(200).json({"message":post,"message2":Ans});
 
 }

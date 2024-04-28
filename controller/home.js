@@ -96,8 +96,6 @@ module.exports.otp = async function (req, res) {
 
   if (userExists) {
     const otp = userExists.otp;
-    console.log(otp);
-    console.log(myotp);
 
     const realExists = await Realuser.findOne({ email: useremail });
 

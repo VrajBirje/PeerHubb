@@ -15,7 +15,7 @@ const Authenticate= async (req,res,next)=>{
      
        const rootUser= await user.findOne({_id:verify._id});
 
-       console.log(rootUser);
+      
        if(!rootUser){
        
            return;

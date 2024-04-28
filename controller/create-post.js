@@ -1,10 +1,9 @@
+const Post = require("../models/PostContainer");
 const PostContainer = require("../models/PostContainer");
 const Library = require("../models/library");
 
 module.exports.CreatePost = async function (req, res) {
   try {
-    console.log(req.rootUser._id);
-    console.log(req.body);
     const uid = req.rootUser._id;
     const heading = req.body.heading;
     const description = req.body.message;
@@ -114,3 +113,15 @@ module.exports.library = async function (req, res) {
     });
   } catch (e) {}
 };
+
+module.exports.DeletePost =  async (req, res)=>{
+  const postId = req.body.postId
+  try {
+    const post = await Post.findOneAndDelete({ _id: postId });
+
+    res.status(200).json({success: true, message: "post deleted"})
+  } catch (error) {
+    res.status(400)
+    throw new Error(error.message)
+  }
+}

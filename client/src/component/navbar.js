@@ -12,7 +12,6 @@ export const Navbar = (props) => {
   var token = document.cookie.substring(6);
 
   // console.log("Value of prop "+props.allCookies.Cookies);
-  console.log(props.login);
 
 
   let l1;

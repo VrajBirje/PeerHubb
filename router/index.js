@@ -36,6 +36,7 @@ router.post('/libfilter',Explore.filter);
 // for creating post
 
 router.post('/create-post',Authenticate,Create.CreatePost);
+router.post('/delete-post',Authenticate,Create.DeletePost);
 
 router.post('/create-libpost',Authenticate,Create.library);
 

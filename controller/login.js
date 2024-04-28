@@ -11,14 +11,12 @@ module.exports.login= async function(req,res){
     const {email,password}= req.body;
   
     
-    console.log(email,password);
     if(!email||!password){
         return res.status(400).json({"error":"Ivalid Information"})
     }
 
     // To check if Email is present or not
     const user= await User.findOne({email:email});
-    console.log(user);
     if(!user){
         return res.status(400).json({"message":"Invalid"})
     }
@@ -36,7 +34,6 @@ module.exports.login= async function(req,res){
 
     // Match True
     else{
-      console.log(email,password);
        const keyy=await jwt.sign(user.toJSON(),'doubt',{expiresIn: '10000000'});
       
         // user.tokens.push(keyy);

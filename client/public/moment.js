@@ -16,7 +16,6 @@ document.querySelector('body').addEventListener('mousemove',eyeball);
   const hamburger = document.getElementById('hamburger')
   const navLinks = document.querySelector(".navlinks");
   const links = document.querySelectorAll(".navlinks li");
-  console.log("Ham "+hamburger)
   if(hamburger){
   hamburger.addEventListener("click", ()=>{
      //Animate Links

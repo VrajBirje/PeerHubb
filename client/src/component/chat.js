@@ -263,6 +263,11 @@ import { Url } from "../constants/link";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { FaBars } from "react-icons/fa6";
 import { IoCloseCircleOutline } from "react-icons/io5";
+import io from "socket.io-client"
+
+const ENDPOINT = "http://localhost:7780"
+let socket, selectedChatCompare;
+
 export default function Chat({ user }) {
     const [chats, setChats] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -275,15 +280,38 @@ export default function Chat({ user }) {
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [openNav, setOpenNav] = useState(true);
+    const [socketConnected, setSocketConnected] = useState(false)
     const currentId = user._id;
-    console.log(user);
-    console.log(currentId);
 
     var token = document.cookie.substring(6);
+    useEffect(()=>{
+        if(user){
+            socket = io(ENDPOINT)
+            socket.emit("setup", user);
+            socket.on("connection", ()=>{
+                setSocketConnected(true)
+            })
+        }
+    }, [user])
+
     useEffect(() => {
         // Fetch chats here and set them to the state
         fetchChats();
-    }, []);
+        selectedChatCompare = selectedChat
+    }, [selectedChat]);
+
+    useEffect(()=>{ 
+        socket.on("messsage received", (newMessageReceived)=>{
+            if(!selectedChatCompare || selectedChatCompare._id !== newMessageReceived.chat._id){
+                // give notification
+                console.log("notification")
+                alert("notifications")
+            }else{
+                console.log("Setting message")
+                setMessages([...messages, newMessageReceived])
+            }
+        });
+    })
 
     const [users, setUsers] = useState([]);
 
@@ -316,12 +344,9 @@ export default function Chat({ user }) {
                 },
                 body: JSON.stringify({ cookies: token }),
             });
-            console.log("response");
             if (response.ok) {
                 const data = await response.json();
                 setChats(data);
-                console.log("data");
-                console.log(data);
             } else {
                 throw new Error("Failed to fetch chats");
             }
@@ -348,7 +373,7 @@ export default function Chat({ user }) {
             if (response.ok) {
                 const data = await response.json();
                 setMessages(data);
-                console.log(data);
+                socket.emit("join chat", chatId)
             } else {
                 throw new Error("Failed to fetch messages");
             }
@@ -371,7 +396,8 @@ export default function Chat({ user }) {
                     cookies: token,
                 }),
             });
-            console.log(response);
+
+            
             if (response.ok) {
                 // Handle successful message send
                 console.log("Message sent successfully");
@@ -379,6 +405,8 @@ export default function Chat({ user }) {
                 setMessageSend("");
                 // Refresh messages for the selected chat
                 fetchMessages(selectedChat._id);
+                let data = await response.json();
+                socket.emit("new message", data)
             } else {
                 throw new Error("Failed to send message");
             }
@@ -621,10 +649,10 @@ export default function Chat({ user }) {
                                     : "justify-start bg-[#f0d48c] rounded-md px-4 py-2"
                                     }`}
                             >
-                                <span>{message?.content}</span>
-                                <span className="text-[11px] font-semibold">
-                                    {message?.sender?.email}{" "}
+                                 <span className="text-[11px] font-semibold">
+                                    {message?.sender?.username}{" "}
                                 </span>
+                                <span>{message?.content}</span>
                             </div>
                         </div>
                     ))}
