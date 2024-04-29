@@ -12,6 +12,14 @@ module.exports.CreatePost = async function (req, res) {
     const status = "false";
     const hidden = req.body.hidden;
     const sub = req.body.subject;
+    var isToxic;
+    if (req.body.isToxic == true || req.body.isToxic == false) {
+      isToxic = req.body.isToxic;
+    }
+    else {
+
+      isToxic = false;
+    }
     if (!uid || !heading || !description || !type || !hidden || !sub) {
       console.log("invalid ");
       return res.json(400, {
@@ -27,6 +35,7 @@ module.exports.CreatePost = async function (req, res) {
         type: type,
         hidden: hidden,
         status: status,
+        isToxic: isToxic,
       },
       function (err, post) {
         if (err) {
@@ -81,7 +90,7 @@ module.exports.library = async function (req, res) {
         message: "Invalid Information",
       });
     }
-  
+
 
     var files = req.files.pdf;
 
@@ -112,5 +121,5 @@ module.exports.library = async function (req, res) {
     return res.json(200, {
       message: "Published",
     });
-  } catch (e) {}
+  } catch (e) { }
 };

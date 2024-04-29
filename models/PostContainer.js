@@ -5,6 +5,7 @@ const bycrypt= require('bcryptjs');
 const multer= require('multer');
 
 const path= require('path');
+const { type } = require('os');
 const Avatar_Path= path.join('/uploads/users')
 
 const Container= new mongoose.Schema({
@@ -55,6 +56,9 @@ const Container= new mongoose.Schema({
     vote:{
         type:Number,
          require:true
+    },
+    isToxic:{
+        type:Boolean,
     }
 
 

@@ -7,9 +7,12 @@ import { Link } from "react-router-dom";
 import { Url } from '../constants/link';
 import { BiUser } from "react-icons/bi";
 import profileIcon from "../asset/images/profileIcon.jpg";
+import { useTheme } from './ThemeContext';
 
 export const Userprofile = () => {
+  const navigate= useNavigate();
   const { addToast } = useToasts();
+  const { theme, changeTheme } = useTheme();
   const history = useNavigate();
   const [user, setuser] = useState();
   const [email, setemail] = useState();
@@ -40,7 +43,7 @@ export const Userprofile = () => {
       setemail(data.message.email);
       setprofession(data.message.profession);
 
-
+console.log(data.message)
 
       if (!res.status === 200) {
         addToast("Login First ‼️", {
@@ -94,20 +97,20 @@ export const Userprofile = () => {
     //   </div>
     // </div>
     <>
-      <div className="w-[100%] flex flex-col justify-center items-center">
+      <div className={`${theme === 'dark' ? ' bg-[#121212] w-[100%] flex flex-col h-[100%] justify-center items-center' : ' bg-white'} chatcontainer w-[100%] h-[85.8vh] flex flex-col justify-center items-center`}>
         <div className="flex justify-start items-center gap-2 w-[90%]">
           <BiUser className="text-violet-500" size={24} />
-          <p className="font-semibold">Profile</p>
+          <p style={{color: theme === 'dark' ? "white": "black"}} className="font-semibold">Profile</p>
         </div>
-        <div className="shadow-xl rounded-md p-10 max-md:p-5  flex flex-col justify-center items-center">
+        <div style={{border: theme == 'dark' ? "solid 1px white": "", color:theme == 'dark' ? "white": "black"}} className="shadow-xl rounded-md p-10 max-md:p-5  flex flex-col justify-center items-center" >
           <div className="flex flex-col justify-start items-center text-center">
             <img src={profileIcon} className="w-[120px] h-[120px] rounded-[50%] bg-cover" />
-             <div className="flex flex-col">
+            <div className="flex flex-col">
               <span className="font-semibold">{user}</span>
               <span className="font-sm font-semibold text-[#808080]">{proffession}</span>
-             </div>
+            </div>
           </div>
-        <span className="w-[100%] border-[1px] mt-5 border-black"></span>
+          <hr style={{color: theme === 'solid 1px white' ? "white": "solid 1px black"}} className="w-[100%] border-[1px] mt-5"></hr>
           <div className="flex gap-4">
             <div>
               <p className="font-semibold">Branch :</p>
@@ -120,10 +123,10 @@ export const Userprofile = () => {
               <p className="">{coin} </p>
             </div>
           </div>
-          <button className="w-max bg-[#FFD700] text-black hover:border-black hover:bg-white font-bold border-[1px] rounded-md py-2 px-4 text-[10px] ">
+          <button onClick={()=>navigate("/contribution")} className="w-max bg-[#FFD700] text-black hover:border-black hover:bg-white font-bold border-[1px] rounded-md py-2 px-4 text-[10px] ">
             View Contributions
           </button>
-         
+
         </div>
       </div>
     </>

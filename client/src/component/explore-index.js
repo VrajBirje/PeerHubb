@@ -6,13 +6,13 @@ import Explore from "./explore-home";
 
 
 
-export function ExploreIndex(){
+export function ExploreIndex({user}){
     return(
         <section>
           {/* <ExploreNav/> */}
             <Routes>
                
-               <Route exact path="/*" element={<Explore />}/>
+               <Route exact path="/*" element={<Explore login={user}/>}/>
                
              </Routes>
         </section>

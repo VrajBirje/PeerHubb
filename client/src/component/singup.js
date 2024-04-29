@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import { Url } from "../constants/link";
-
+import { useTheme } from './ThemeContext';
 export const Singup = (props) => {
   const [buttonIn, setbuttonIn] = useState(false);
+  const { theme, changeTheme } = useTheme();
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -141,9 +142,9 @@ export const Singup = (props) => {
     //     </div>
     //   </div>
     // </div>
-    <div className="w-[100%]  h-[90vh] flex justify-center items-center" style={{ backgroundImage: "url('https://img.freepik.com/premium-vector/problem-solution-business-solving-look-ideas-with-concept-teamwork-can-use-web-banner-background-flat-illustration_2175-2898.jpg?w=900')", backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
+    <div className={`${theme === 'dark' ? ' bg-[#121212] text-white':' bg-white'} w-[100%]  h-[90vh] flex justify-center items-center`} style={{ backgroundImage: "url('https://img.freepik.com/premium-vector/problem-solution-business-solving-look-ideas-with-concept-teamwork-can-use-web-banner-background-flat-illustration_2175-2898.jpg?w=900')", backgroundColor: "rgba(255, 255, 255, 0.2)" }}>
       <div>
-        <div className="flex flex-col p-10 shadow-xl rounded-[30px]" style={{backgroundColor:"white"}}>
+        <div className={`${theme === 'dark' ? ' bg-[#262525]':'bg-white'}  flex flex-col p-10 shadow-xl rounded-[30px]`}>
           <p style={{ fontWeight: "400" }} className="font-semibold text-[20px]">CREATE AN ACCOUNT</p>
           <form
             method="POST"
@@ -158,7 +159,7 @@ export const Singup = (props) => {
                 placeholder="Unique Username"
                 value={user.username}
                 onChange={handleInputs}
-                className="border border-[#C1BBEB] rounded-md w-[100%] p-2"
+                className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} border border-[#C1BBEB] rounded-md w-[100%] p-2`}
               />
               <input
                 type="email"
@@ -167,7 +168,7 @@ export const Singup = (props) => {
                 id="email"
                 value={user.email}
                 onChange={handleInputs}
-                className="border border-[#C1BBEB] rounded-md w-[100%] p-2"
+                className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} border border-[#C1BBEB] rounded-md w-[100%] p-2`}
               />
             </div>
             <div className="flex gap-5">
@@ -178,7 +179,7 @@ export const Singup = (props) => {
                 placeholder="Student or Teacher"
                 value={user.profession}
                 onChange={handleInputs}
-                className="border border-[#C1BBEB] rounded-md w-[100%] p-2"
+                className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} border border-[#C1BBEB] rounded-md w-[100%] p-2`}
               />
               <input
                 type="text"
@@ -187,7 +188,7 @@ export const Singup = (props) => {
                 placeholder="Univeristy Name"
                 value={user.university}
                 onChange={handleInputs}
-                className="border border-[#C1BBEB] rounded-md w-[100%] p-2"
+                className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} border border-[#C1BBEB] rounded-md w-[100%] p-2`}
               />
             </div>
             <div className="flex gap-5">
@@ -198,7 +199,7 @@ export const Singup = (props) => {
                 placeholder="Department"
                 value={user.enrolled}
                 onChange={handleInputs}
-                className="border border-[#C1BBEB] rounded-md w-[100%] p-2"
+                className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} border border-[#C1BBEB] rounded-md w-[100%] p-2`}
               />
 
               <input
@@ -208,7 +209,7 @@ export const Singup = (props) => {
                 id="password"
                 value={user.password}
                 onChange={handleInputs}
-                className="border border-[#C1BBEB] rounded-md w-[100%] p-2"
+                className={`${theme === 'dark' ? ' bg-[#413f3f] text-white':'bg-white'} border border-[#C1BBEB] rounded-md w-[100%] p-2`}
               />
             </div>
 

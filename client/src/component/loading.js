@@ -1,11 +1,13 @@
-import styles from '../asset/css/loading.module.css';
+// import styles from "../asset/css/loading.module.css";
+import SquareLoader from "react-spinners/SquareLoader";
+{/* <BarLoader color="blue" /> */}
+const Loading = () => {
+  return (
+    <div className="bg-white w-[100%] h-[90vh] flex justify-center items-center">
+      <SquareLoader color="yellow" />
 
-const Loading=()=>{
-    return(
-        <body class={styles.mainbody}>
-              <div class={styles.loader}></div>
-          </body> 
-    )
-}
+    </div>
+  );
+};
 
 export default Loading;
