@@ -74,8 +74,8 @@ module.exports.downvote= async function(req,res){
     let post= await Post.findOne({_id:req.body.id});
 
     let alreadypresnt=false;
-    let upvote= await post.upvote;
-    let downvote= await post.downvote;
+    let upvote=  post.upvote;
+    let downvote=  post.downvote;
     let downpresent=false;
     upvote.forEach(function(item){
         if(userId.equals(item)){

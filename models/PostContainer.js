@@ -59,6 +59,9 @@ const Container= new mongoose.Schema({
     },
     isToxic:{
         type:Boolean,
+    },
+    toxicLabel:{
+        type:String
     }
 
 

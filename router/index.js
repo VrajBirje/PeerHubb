@@ -32,6 +32,8 @@ router.get('/explorelib',Explore.Lib);
 
 router.post('/libfilter',Explore.filter);
 
+router.post('/delete-post',Create.DeletePost);
+
 
 // for creating post
 

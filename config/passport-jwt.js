@@ -13,7 +13,7 @@ const Authenticate= async (req,res,next)=>{
         
        
      
-       const rootUser= await user.findOne({_id:verify._id});
+       const rootUser= await user.findOne({_id:verify._id}).populate("solved","answer");
 
        console.log(rootUser);
        if(!rootUser){

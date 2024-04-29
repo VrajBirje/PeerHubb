@@ -145,6 +145,7 @@ import { Library } from "./component/library";
 import { Libraryform } from "./component/library-from";
 import Chat from "./component/chat";
 import ContributionDetails from "./component/soon";
+import AbusiveDetection from "./component/ml";
 
 const App = (props) => {
   const [login, islogin] = useState([]);
@@ -205,6 +206,7 @@ const App = (props) => {
             <Route exact path="/contribution" element={<ContributionDetails />} />
             <Route exact path="/otp" element={<Otp otpemail={otpemail} />} />
             <Route exact path="/library" element={<Library />} />
+            <Route exact path="/abuse" element={<AbusiveDetection />} />
 
             <Route exact path="/library-from" element={<Libraryform />} />
           </Routes>

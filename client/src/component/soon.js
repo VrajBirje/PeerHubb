@@ -2,7 +2,8 @@ import React from "react";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { TbUserSquareRounded } from "react-icons/tb";
 import { LuArrowUpCircle, LuArrowDownCircle } from "react-icons/lu";
-function ContributionDetails() {
+function ContributionDetails({solved}) {
+  console.log(solved)
   return (
     <div className="w-[100%] flex justify-center pt-10 max-md:px-4">
       <div className="flex flex-col md:w-[90%] pb-5">

@@ -1,6 +1,7 @@
 const PostContainer = require("../models/PostContainer");
 const Answer = require("../models/Answer");
 const mailer = require("../mailers/mailer1");
+const UserInfo = require("../models/user");
 module.exports.Comment = async function (req, res) {
   try {
     const uid = req.rootUser._id;
@@ -15,30 +16,60 @@ module.exports.Comment = async function (req, res) {
     const Post11 = await PostContainer.findOne({ _id: postid }).populate(
       "user"
     );
-    Answer.create(
-      {
-        answer: answer,
-        problem: postid,
-        user: uid,
-        hidden: hidden,
-      },
-      function (err, answer) {
+    // const ans = Answer.create(
+    //   {
+    //     answer: answer,
+    //     problem: postid,
+    //     user: uid,
+    //     hidden: hidden,
+    //   },
+    //   function (err, answer) {
+    //     if (err) {
+    //       console.log(err);
+    //       return res.status(400).json({ message: err });
+    //     }
+    //     if (req.files) {
+    //       var files = req.files.img;
+    //       files.mv("uploads/users/" + files.name, function (err) {
+    //         if (err) {
+    //           console.log(err);
+    //         }
+    //       });
+
+    //       answer.avatar = PostContainer.avatarPath + "/" + files.name;
+    //       answer.save();
+    //       return answer;
+    //     }
+    //   }
+    // );
+    const ans = await Answer.create({
+      answer: answer,
+      problem: postid,
+      user: uid,
+      hidden: hidden,
+    });
+
+    if (req.files) {
+      const files = req.files.img;
+      files.mv("uploads/users/" + files.name, function (err) {
         if (err) {
           console.log(err);
-          return res.status(400).json({ message: err });
         }
-        if (req.files) {
-          var files = req.files.img;
-          files.mv("uploads/users/" + files.name, function (err) {
-            if (err) {
-              console.log(err);
-            }
-          });
+      });
 
-          answer.avatar = PostContainer.avatarPath + "/" + files.name;
-          answer.save();
-        }
-      }
+      ans.avatar = PostContainer.avatarPath + "/" + files.name;
+      await ans.save();
+    }
+
+    // return ans;
+
+    console.log("ans")
+    console.log(ans)
+
+    const user = await UserInfo.findOneAndUpdate(
+      { _id: req.rootUser._id },
+      { $push: { solved: ans._id } }, // Adjusted syntax for $push
+      { new: true } // To return the updated document
     );
     // console.log(Post.user);
     // console.log(Post.user.email);

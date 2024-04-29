@@ -198,6 +198,8 @@ export default function Chat({ user }) {
             });
             if (response.ok) {
                 console.log("Group created successfully");
+                alert("grou created successfully")
+                setShowCreateModal(false);
                 // Optionally, you can update the state or perform any other actions after group creation
             } else {
                 throw new Error("Failed to create group");
@@ -458,13 +460,14 @@ export default function Chat({ user }) {
                 </button>
 
                 <div
+                //group modal
                     className="shadow-xl flex flex-col justify-between  p-10 border rounded-md bg-white"
                     style={{
                         display: showCreateModal ? "block" : "none",
                         height: "500px",
                         width: "500px",
                         position: "absolute",
-                        right: "-700",
+                        right: "400",
                         top: "50",
                     }}
                 >
