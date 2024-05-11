@@ -264,6 +264,8 @@ import { HiOutlineUserGroup } from "react-icons/hi";
 import { FaBars } from "react-icons/fa6";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import io from "socket.io-client"
+import Lottie from "react-lottie"
+import animationData from "../animations/typing.json"
 
 const ENDPOINT = "http://localhost:7780"
 let socket, selectedChatCompare;
@@ -281,6 +283,8 @@ export default function Chat({ user }) {
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [openNav, setOpenNav] = useState(true);
     const [socketConnected, setSocketConnected] = useState(false)
+    const [typing, setTyping] = useState(false)
+    const [isTyping, setIsTyping] = useState(false)
     const currentId = user._id;
 
     var token = document.cookie.substring(6);
@@ -288,9 +292,11 @@ export default function Chat({ user }) {
         if(user){
             socket = io(ENDPOINT)
             socket.emit("setup", user);
-            socket.on("connection", ()=>{
+            socket.on("connected", ()=>{
                 setSocketConnected(true)
             })
+            socket.on("typing", ()=>setIsTyping(true))
+            socket.on("stop typing", ()=>setIsTyping(false))
         }
     }, [user])
 
@@ -383,6 +389,7 @@ export default function Chat({ user }) {
     };
 
     const handleMessageSend = async () => {
+        socket.emit("stop typing", selectedChat._id)
         try {
             const response = await fetch("http://localhost:7780/message", {
                 method: "POST",
@@ -461,6 +468,40 @@ export default function Chat({ user }) {
             console.error(error);
         }
     };
+
+    const handleTyping = (e)=>{
+        setMessageSend(e.target.value)
+
+        if(!socketConnected) return;
+
+        if(!typing){
+            setTyping(true)
+            socket.emit("typing", selectedChat._id);
+        }
+
+        let lastTypingTime = new Date().getTime()
+        let timerLength = 3000
+
+        setTimeout(()=>{
+          let timeNow = new Date().getTime();
+          let timeDiff = timeNow - lastTypingTime
+
+          if(timeDiff >= timerLength && typing){
+             socket.emit("stop typing", selectedChat._id)
+             setTyping(false)
+          }
+        }, timerLength)
+
+    }
+
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        renderSettings:{
+            preseveAspecRatio: "xMidMid slice"
+        } 
+    }
 
     return (
         <div
@@ -657,11 +698,14 @@ export default function Chat({ user }) {
                         </div>
                     ))}
                 </div>
-                <div className="mb-8  flex justify-between gap-2 w-[100%] pr-10 pl-2">
-                    <input
+               
+                <div className="">
+                {isTyping? <Lottie options={defaultOptions} width={70} style={{marginBottom:0, marginLeft: 0}}/>: <></>}
+                <div className="mb-8  justify-between gap-2 w-[100%] pr-10 pl-2">
+                 <input
                         type="text"
                         value={messageSend}
-                        onChange={(e) => setMessageSend(e.target.value)}
+                        onChange={handleTyping}
                         className="border border-violet-500 w-[90%] rounded-md p-2"
                         placeholder="Enter Your Messsage"
                     />
@@ -671,6 +715,7 @@ export default function Chat({ user }) {
                     >
                         Send
                     </button>
+                    </div>
                 </div>
             </div>
         </div>
