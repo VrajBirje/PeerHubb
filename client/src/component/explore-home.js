@@ -37,6 +37,13 @@ export function Explore({ login }) {
     "Most Voted",
     "Feedback and Support",
   ];
+  var loginEmail;
+  if(login){
+    loginEmail = login.email;
+  }
+  else{
+    loginEmail = "";
+  }
   const adminEmail = "internhoarway@gmail.com";
   const [type, settype] = useState("null");
   // const [vote, setVote] = useState(0);
@@ -422,7 +429,7 @@ export function Explore({ login }) {
                     <div className="flex justify-between items-center">
                       <p className="text-[10px] font-semibold">
                         {/* {item.status === true ? 'Solved':'To be solved'} */}
-                        {(login.email === adminEmail && item.isToxic ) &&
+                        {(loginEmail === adminEmail && item.isToxic ) &&
                           <button className="bg-[red] text-black hover:border-black hover:bg-white font-bold border-[1px] rounded-md py-1 px-4 text-[14px]" target="_blank"
                             onClick={() => deletePost(item._id)}
                           >

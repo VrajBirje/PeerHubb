@@ -119,18 +119,20 @@ export function Home() {
         id="carousel_da5f"
         data-image-width={1980}
         data-image-height={1114}
+        style={{backgroundColor:theme==="dark" ? "black" : ""}}
       >
         <div
           className="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xl u-opacity u-opacity-55 u-palette-4-base u-shape u-shape-rectangle u-shape-1"
           data-animation-name="rollIn"
           data-animation-duration={1000}
           data-animation-direction=""
+          style={{backgroundColor:theme==="dark" ? "black" : ""}}
         />
-        <div className="u-clearfix u-gutter-40 u-layout-spacing-vertical u-layout-wrap u-layout-wrap-1">
-          <div className="u-gutter-0 u-layout">
-            <div className="u-layout-row">
-              <div className="u-size-60">
-                <div className="u-layout-col">
+        <div className="u-clearfix u-gutter-40 u-layout-spacing-vertical u-layout-wrap u-layout-wrap-1" style={{backgroundColor:theme==="dark" ? "black" : ""}}>
+          <div className="u-gutter-0 u-layout" >
+            <div className="u-layout-row" style={{backgroundColor:theme==="dark" ? "black" : ""}}>
+              <div className="u-size-60" style={{backgroundColor:theme==="dark" ? "black" : ""}}>
+                <div className="u-layout-col" style={{backgroundColor:theme==="dark" ? "black" : ""}}>
                   <div
                     className="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs u-container-style u-layout-cell u-radius-20 u-right-cell u-size-20 u-white u-layout-cell-1"
                     wfd-invisible="true"
@@ -176,7 +178,7 @@ export function Home() {
           </div>
         </div>
       </section>
-      <section className="u-clearfix u-grey-5 u-section-3" id="carousel_f9e5">
+      <section className="u-clearfix u-grey-5 u-section-3" id="carousel_f9e5" style={{backgroundColor:theme==="dark" ? "black" : ""}}>
         <div className="u-clearfix u-sheet u-sheet-1">
           <div className="u-expanded-width-xs u-gradient u-shape u-shape-rectangle u-shape-1" />
           <img
@@ -185,7 +187,7 @@ export function Home() {
             data-image-width={1080}
             data-image-height={1080}
           />
-          <div className="u-container-style u-group u-radius-20 u-shape-round u-white u-group-1">
+          <div className="u-container-style u-group u-radius-20 u-shape-round u-white u-group-1" style={{marginRight:"20px"}}>
             <div className="u-container-layout u-container-layout-1">
               <h2 className="u-text u-text-1">
                 {" "}
@@ -193,9 +195,9 @@ export function Home() {
               </h2>
             </div>
           </div>
-          <div className="u-list u-list-1">
-            <div className="u-repeater u-repeater-1">
-              {/* General Discussion */}
+          <div className="u-list u-list-1" style={{display:"flex", justifyContent:"flex-end", marginRight:"20px"}}>
+            <div style={{display:"flex",justifyContent:"flex-end", gap:"10px"}} >
+             
 
               <div className="u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-video-cover u-white u-list-item-1">
                 <div className="u-container-layout u-similar-container u-valign-top u-container-layout-2">
@@ -210,7 +212,7 @@ export function Home() {
                 </div>
               </div>
 
-              {/* Having Doubt */}
+            
 
               <div className="u-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-video-cover u-white u-list-item-2">
                 <div className="u-container-layout u-similar-container u-valign-top u-container-layout-3">
@@ -225,7 +227,6 @@ export function Home() {
                 </div>
               </div>
 
-              {/* Solve the Doubt */}
 
               <div className="u-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-video-cover u-white u-list-item-3">
                 <div className="u-container-layout u-similar-container u-valign-top u-container-layout-4">
@@ -233,14 +234,12 @@ export function Home() {
                     <img src="https://cdn-icons-png.flaticon.com/512/2618/2618497.png" alt="" />
                   </span>
                   <h4 className="u-align-center-sm u-align-center-xs u-text u-text-palette-1-base u-text-4">
-                    Solve the Doubt
+                    Solve 
+                  <br />
+                    Doubt
                   </h4>
                 </div>
               </div>
-
-              {/* other section  */}
-
-              {/* other section 2 */}
               <a href="">
                 <div className="u-align-center u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-video-cover u-white u-list-item-5">
                   <div className="u-container-layout u-similar-container u-valign-top u-container-layout-6">
@@ -270,27 +269,10 @@ export function Home() {
             data-animation-duration={1000}
             data-animation-direction="Left"
           />
-          <div className="u-list u-list-1">
+          <div className="u-list u-list-1" style={{marginLeft:"20px"}}>
             <div className="u-repeater u-repeater-1">
-              {/* Education */}
-              {/* <div
-            className="u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white u-list-item-1"
-            data-animation-name="flipIn"
-            data-animation-duration={1000}
-            data-animation-direction="X"
-            data-animation-delay={250}
-          >
-            <div className="u-container-layout u-similar-container u-container-layout-1">
-              <h3 className="u-text u-text-default u-text-palette-1-base u-text-1">
-                01 Education
-              </h3>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus
-              assumenda nihil eaque incidunt illo quaerat dolorum iure alias
-              magnam. Consequatur beatae vel optio ex sint. Expedita molestias
-              libero unde odit.
-            </div>
-          </div> */}
-              {/* Loving */}
+             
+             
               <div
                 className="u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white"
                 data-animation-name="flipIn"
@@ -307,7 +289,7 @@ export function Home() {
                   Just Publish your Post and Wait for Response.
                 </div>
               </div>
-              {/* Third Section */}
+              
               <div
                 className="u-container-style u-list-item u-radius-20 u-repeater-item u-shape-round u-white"
                 data-animation-name="flipIn"
@@ -337,7 +319,7 @@ export function Home() {
           />
         </div>
       </section>
-      <section className="u-clearfix u-section-5" id="carousel_dc8a">
+      <section className="u-clearfix u-section-5" id="carousel_dc8a" style={{backgroundColor:theme==="dark" ? "black" : ""}}>
         <div className="u-clearfix u-sheet u-valign-bottom-xs u-sheet-1">
           <div className="u-gradient u-shape u-shape-circle u-shape-1" />
           <div className="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-gradient u-shape u-shape-rectangle u-shape-2" />
@@ -365,10 +347,11 @@ export function Home() {
       <section
         className="u-align-center u-clearfix u-grey-5 u-section-6"
         id="carousel_e735"
+        style={{backgroundColor:theme==="dark" ? "black" : ""}}
       >
         <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
-          {/* How to use */}
-          <h2 className="u-text u-text-default u-text-1"> How you can Use it</h2>
+         
+          <h2 className="u-text u-text-default u-text-1" style={{color:theme==="dark" ? "white" : ""}}> How you can Use it</h2>
           <div className="u-list u-list-1">
             <div className="u-repeater u-repeater-1">
               <div className="u-align-left u-container-style u-custom-item u-gradient u-list-item u-radius-20 u-repeater-item u-shape-round u-list-item-1">
@@ -423,14 +406,14 @@ export function Home() {
           </div>
         </div>
       </section>
-      <section className="u-clearfix u-section-7" id="carousel_af6f">
+      <section className="u-clearfix u-section-7" id="carousel_af6f" style={{backgroundColor:theme==="dark" ? "black" : ""}}>
         <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
           <div className="u-clearfix u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-layout-wrap u-layout-wrap-1">
             <div className="u-layout">
               <div className="u-layout-row">
                 <div className="u-align-left u-container-style u-layout-cell u-left-cell u-size-15 u-size-60-md u-layout-cell-1">
                   <div className="u-container-layout u-container-layout-1">
-                    <h4 className="u-text u-text-1"> Made by ~ </h4>
+                    <h4 className="u-text u-text-1" style={{color:theme==="dark" ? "white" : ""}}> Made by ~ </h4>
                     <p className="u-text u-text-2">
 
                     </p>
@@ -476,7 +459,7 @@ export function Home() {
                         </g>
                       </svg>
                     </span>
-                    <p className="u-text u-text-3">
+                    <p className="u-text u-text-3" style={{color:theme==="dark" ? "white" : ""}}>
                       This Website is Built Using MERN (MongoDB Express React NodeJS) Stack and much more library <br></br>
                       Hope You Love it
                       <br></br>
@@ -513,7 +496,7 @@ export function Home() {
           <p className="u-small-text u-text u-text-variant u-text-1" />
         </div>
       </footer>
-      <section className="u-backlink u-clearfix u-grey-80"></section>
+      {/* <section className="u-backlink u-clearfix u-grey-80"></section> */}
 
 
 
