@@ -55,7 +55,7 @@ export function Library() {
   return (
     <div>
       {/* Hello world */}
-      <div className={`w-[100%] flex justify-center pb-5 ${theme === 'dark' ? 'text-white bg-[#121212]':'text-black bg-white'}`}>
+      <div className={`w-[100%] flex justify-center pb-5 ${theme === 'dark' ? 'text-white bg-[#121212]' : 'text-black bg-white'}`}>
         <div className="w-[90%] flex flex-col gap-5">
           <div className="flex items-center gap-2 pt-8">
             <RiBook2Line size={32} />
@@ -67,7 +67,7 @@ export function Library() {
             </div>
           </div>
 
-          <div className={`${theme === 'dark' ? ' bg-[#262525]':'bg-white'} w-[100%] flex justify-between items-center shadow-md px-10 py-4 rounded-md`}>
+          <div className={`${theme === 'dark' ? ' bg-[#262525]' : 'bg-white'} w-[100%] flex justify-between items-center shadow-md px-10 py-4 rounded-md`}>
             <span className="font-semibold">Publish a PDF</span>
             <label className="w-max border-[#FFD700] font-semibold bg-[#FFD700] hover:bg-[#ffd45d] hover:text-white py-[6px] inline-block cursor-pointer px-4  rounded-md">
               {/* <input type="file" className="w-max hidden  bg-red-100 " /> */}
@@ -75,7 +75,7 @@ export function Library() {
             </label>
           </div>
 
-          <div className={`${theme === 'dark' ? ' bg-[#262525]':'bg-white'} w-[100%] flex flex-col  shadow-md p-10 rounded-md gap-5`}>
+          <div className={`${theme === 'dark' ? ' bg-[#262525]' : 'bg-white'} w-[100%] flex flex-col  shadow-md p-10 rounded-md gap-5`}>
             <span className="font-semibold text-[16px] flex justify-start">Library Resources</span>
             <div className="flex max-md:flex-col gap-10 justify-between md:px-10">
               <div className="flex flex-col   w-[100%]">
@@ -83,7 +83,7 @@ export function Library() {
                 <select
                   type="text"
                   placeholder="Type"
-                  className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm`}
+                  className={`${theme === 'dark' ? ' bg-[#413f3f]' : 'bg-[#E5E7EB]'} border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm`}
                   onChange={(e) => setype(e.target.value)}
                   defaultValue={type}
                 >
@@ -102,7 +102,7 @@ export function Library() {
                   placeholder="Heading"
                   onChange={(e) => setsemester(e.target.value)}
                   defaultValue={semester}
-                  className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm`}
+                  className={`${theme === 'dark' ? ' bg-[#413f3f]' : 'bg-[#E5E7EB]'} border border-[#C1BBEB] p-1 px-2 rounded-md placeholder:text-sm`}
                 >
                   <option>none</option>
                   <option>1</option>
@@ -124,7 +124,7 @@ export function Library() {
             </div>
             <div className="grid grid-cols-2 gap-5">
               {books.map((y) => (
-                <div key={y.pdfname} className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-start items-center  p-5 px-10 rounded-[20px] w-full`}>
+                <div key={y.pdfname} className={`${theme === 'dark' ? ' bg-[#413f3f]' : 'bg-[#E5E7EB]'} flex flex-col justify-start items-center  p-5 px-10 rounded-[20px] w-full`}>
                   <FaFilePdf size={20} />
                   <h5 className="font-semibold">{y.pdfname}</h5>
                   <p className="text-sm">Subject: {y.subject}</p>
@@ -132,59 +132,24 @@ export function Library() {
                   <a href={y.path} target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
                 </div>
               ))}
-              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-start items-center  p-5 px-10 rounded-[20px] w-full`}>
-                  <FaFilePdf size={20} />
-                  <h5 className="font-semibold">y.pdfname</h5>
-                  <p className="text-sm">Subject: y.pdfname</p>
-                  <p className="text-sm">Semester: y.pdfname</p>
-                  <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
-                </div>
-              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-start items-center  p-5 px-10 rounded-[20px] w-full`}>
-                  <FaFilePdf size={20} />
-                  <h5 className="font-semibold">y.pdfname</h5>
-                  <p className="text-sm">Subject: y.pdfname</p>
-                  <p className="text-sm">Semester: y.pdfname</p>
-                  <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
-                </div>
-              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-start items-center p-5 px-10 rounded-[20px] w-full`}>
-                  <FaFilePdf size={20} />
-                  <h5 className="font-semibold">y.pdfname</h5>
-                  <p className="text-sm">Subject: y.pdfname</p>
-                  <p className="text-sm">Semester: y.pdfname</p>
-                  <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
-                </div>
-              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-start items-center  p-5 px-10 rounded-[20px] w-full`}>
-                  <FaFilePdf size={20} />
-                  <h5 className="font-semibold">y.pdfname</h5>
-                  <p className="text-sm">Subject: y.pdfname</p>
-                  <p className="text-sm">Semester: y.pdfname</p>
-                  <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
-                </div>
-              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-start items-center  p-5 px-10 rounded-[20px] w-full`}>
-                  <FaFilePdf size={20} />
-                  <h5 className="font-semibold">y.pdfname</h5>
-                  <p className="text-sm">Subject: y.pdfname</p>
-                  <p className="text-sm">Semester: y.pdfname</p>
-                  <a  target="_blank" rel="noopener noreferrer" className="text-blue-500">Read More</a>
-                </div>
             </div>
             <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 max-sm:grid-cols-1 gap-10 ">
-              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-center items-center  p-5 px-10 rounded-[20px] w-[100%]`}>
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]' : 'bg-[#E5E7EB]'} flex flex-col justify-center items-center  p-5 px-10 rounded-[20px] w-[100%]`}>
                 <img src={notes} className="h-[50px] w-[50px]" />
                 <span className="font-semibold">Notes</span>
                 <Link to="/" className="text-blue-500">View PDFs</Link>
               </div>
-              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-center items-center  p-5 px-10 rounded-[20px] w-[100%]`}>
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]' : 'bg-[#E5E7EB]'} flex flex-col justify-center items-center  p-5 px-10 rounded-[20px] w-[100%]`}>
                 <img src={questionP} className="h-[50px] w-[50px]" />
                 <span className="font-semibold">Question Papers</span>
                 <Link to="/" className="text-blue-500">View PDFs</Link>
               </div>
-              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-center items-center  p-5 px-10 rounded-[20px] w-[100%]`}>
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]' : 'bg-[#E5E7EB]'} flex flex-col justify-center items-center  p-5 px-10 rounded-[20px] w-[100%]`}>
                 <LuPen size={32} className="text-black" />
                 <span className="font-semibold">Answer Papers</span>
                 <Link to="/" className="text-blue-500">View PDFs</Link>
               </div>
-              <div className={`${theme === 'dark' ? ' bg-[#413f3f]':'bg-[#E5E7EB]'} flex flex-col justify-center items-center  p-5 px-10 rounded-[20px] w-[100%]`}>
+              <div className={`${theme === 'dark' ? ' bg-[#413f3f]' : 'bg-[#E5E7EB]'} flex flex-col justify-center items-center  p-5 px-10 rounded-[20px] w-[100%]`}>
                 <img src={otherDocs} className="h-[50px] w-[50px]" />
                 <span className="font-semibold">Notes</span>
                 <Link to="/" className="text-blue-500">Other Documents</Link>
@@ -263,13 +228,14 @@ export function Library() {
       <section
         className="u-align-center u-clearfix u-gradient u-section-2"
         id="carousel_acf5"
+        style={{backgroundColor:theme==="dark" ? "black" : ""}}
       >
-        <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
-          <h2 className="u-align-center u-text u-text-default u-text-1">
+        <div className="u-clearfix u-sheet u-valign-middle u-sheet-1" style={{backgroundColor:theme==="dark" ? "black" : ""}}>
+          <h2 className="u-align-center u-text u-text-default u-text-1" style={{color:theme==="dark" ? "white" : ""}}>
             We'll help manage your study
           </h2>
           <div className="u-expanded-width u-list u-list-1">
-            <div className="u-repeater u-repeater-1">
+            <div className="u-repeater u-repeater-1" style={{margin:"0 20px"}}>
               <div className="u-align-center u-container-style u-custom-item u-list-item u-palette-3-base u-radius-20 u-repeater-item u-shape-round u-video-cover u-list-item-1">
                 <div className="u-container-layout u-similar-container u-container-layout-1">
                   <h4 className="u-text u-text-2">
@@ -320,7 +286,7 @@ export function Library() {
           </div>
         </div>
       </section>
-      <section className="u-clearfix u-section-3" id="sec-3ea0">
+      {/* <section className="u-clearfix u-section-3" id="sec-3ea0">
         <div className="u-clearfix u-sheet u-sheet-1">
           <div className="u-expanded-width-lg u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-list u-list-1">
             <div className="u-repeater u-repeater-1">
@@ -420,7 +386,7 @@ export function Library() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div >
   );
 }

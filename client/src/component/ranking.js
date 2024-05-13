@@ -66,8 +66,8 @@ export const Rank = () => {
                     <table className="w-full border-collapse ">
                         <thead className="bg-[#fff2ab] h-10 sticky top-0">
                             <tr className="">
-                                <th className="text-left pl-10">Rank</th>
-                                <th className="text-left">Name</th>
+                                <th className="text-left pl-10">Name</th>
+                                <th className="text-left">Rank</th>
                                 <th className="text-left">Points</th>
                                 <th className="text-left">Action</th>
                             </tr>
