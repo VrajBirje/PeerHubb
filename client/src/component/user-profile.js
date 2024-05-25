@@ -108,7 +108,7 @@ export const Userprofile = () => {
 
         </div>
       </div>
-      <div className="w-[100%] flex justify-center pt-10 max-md:px-4">
+      <div className="w-[100%] flex justify-center pt-10 max-md:px-4" style={{backgroundColor:theme==="dark" ? "black" : ""}}>
         <div className="flex flex-col md:w-[90%] pb-5">
           <div className="bg-[#f0e399] p-5 flex justify-between">
             <span className="font-semibold">Your Contribution</span>
@@ -116,14 +116,14 @@ export const Userprofile = () => {
           </div>
 
           {solved.map(item => (
-            <div className="shadow-lg rounded-md w-[100%] p-5 md:p-10 mt-2">
+            <div className="shadow-lg rounded-md w-[100%] p-5 md:p-10 mt-2" style={{border:theme==="dark"?"1px solid white":"", color:theme==="dark"?"white":""}}>
               <div className="flex justify-between">
                 <div className="flex gap-2 items-center">
                   <TbUserSquareRounded size={44} className="text-[#808080]" />
                   <div className="flex flex-col ">
                     <span className="text-[15px] font-semibold">{user}</span>
                     <span className="text-[10px] text-[#808080]">
-                      <span className="text-black  font-semibold">
+                      <span className="text-black  font-semibold" style={{color:theme==="dark"?"white":""}}>
                         Answered on:
                       </span>{" "}
                       12/04/2024{" "}
@@ -142,7 +142,7 @@ export const Userprofile = () => {
                 </p>
               </div>
               <div className="flex justify-end items-center">
-                <button className=" text-black  hover:bg-[#FFD700] border-[1px] border-black rounded-md py-1 px-4 text-[14px]">
+                <button className=" text-black  hover:bg-[#FFD700] border-[1px] border-black rounded-md py-1 px-4 text-[14px]" style={{border:theme==="dark"?"1px solid white":"", color:theme==="dark"?"white":""}}>
                   Attachment.pdf
                 </button>
               </div>

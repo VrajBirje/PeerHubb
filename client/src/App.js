@@ -146,6 +146,7 @@ import { Libraryform } from "./component/library-from";
 import Chat from "./component/chat";
 import ContributionDetails from "./component/soon";
 import AbusiveDetection from "./component/ml";
+import { SidebarProvider } from "./component/contextAPI";
 
 const App = (props) => {
   const [login, islogin] = useState([]);
@@ -170,7 +171,7 @@ const App = (props) => {
       console.log(response);
       islogin(data.message);
       console.log(login);
-    } catch (err) {}
+    } catch (err) { }
   };
 
   useEffect(() => {
@@ -178,40 +179,42 @@ const App = (props) => {
   }, []);
   return (
     <ThemeContextProvider>
-      <CookiesProvider>
-        <div className="App">
-          <Navbar login={login} />
-          {/* <h1>{cookies}</h1> */}
+      <SidebarProvider>
+        <CookiesProvider>
+          <div className="App">
+            <Navbar login={login} />
+            {/* <h1>{cookies}</h1> */}
 
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/explore/*" element={<ExploreIndex user={login} />} />
-            <Route exact path="/chat" element={<Chat user={login} />} />
-            <Route
-              exact
-              path="/sing-up"
-              element={<Singup setOtpEmail={setotpEmail} />}
-            />
-            <Route exact path="/login" element={<Login login={islogin} />} />
-            <Route exact path="/create-post" element={<CreatePost />} />
-            <Route exact path="/my-profile" element={<Userprofile />} />
-            <Route
-              exact
-              path="/post/:postId"
-              element={<EachPost setSolved={setSolved} />}
-            />
-            <Route exact path="/solved" element={<Solved solved={solved} />} />
-            <Route exact path="/rank" element={<Rank />} />
-            <Route exact path="/log-out" element={<Logout login={islogin} />} />
-            <Route exact path="/contribution" element={<ContributionDetails />} />
-            <Route exact path="/otp" element={<Otp otpemail={otpemail} />} />
-            <Route exact path="/library" element={<Library />} />
-            <Route exact path="/abuse" element={<AbusiveDetection />} />
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/explore/*" element={<ExploreIndex user={login} />} />
+              <Route exact path="/chat" element={<Chat user={login} />} />
+              <Route
+                exact
+                path="/sing-up"
+                element={<Singup setOtpEmail={setotpEmail} />}
+              />
+              <Route exact path="/login" element={<Login login={islogin} />} />
+              <Route exact path="/create-post" element={<CreatePost />} />
+              <Route exact path="/my-profile" element={<Userprofile />} />
+              <Route
+                exact
+                path="/post/:postId"
+                element={<EachPost setSolved={setSolved} />}
+              />
+              <Route exact path="/solved" element={<Solved solved={solved} />} />
+              <Route exact path="/rank" element={<Rank />} />
+              <Route exact path="/log-out" element={<Logout login={islogin} />} />
+              <Route exact path="/contribution" element={<ContributionDetails />} />
+              <Route exact path="/otp" element={<Otp otpemail={otpemail} />} />
+              <Route exact path="/library" element={<Library />} />
+              <Route exact path="/abuse" element={<AbusiveDetection />} />
 
-            <Route exact path="/library-from" element={<Libraryform />} />
-          </Routes>
-        </div>
-      </CookiesProvider>
+              <Route exact path="/library-from" element={<Libraryform />} />
+            </Routes>
+          </div>
+        </CookiesProvider>
+      </SidebarProvider>
     </ThemeContextProvider>
   );
 };

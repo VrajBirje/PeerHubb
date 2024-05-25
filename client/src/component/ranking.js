@@ -1,12 +1,14 @@
 
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 // import "../asset/css/rank.css";
 import Loading from "./loading";
 import { Url } from "../constants/link";
 import { useTheme } from './ThemeContext';
 import { useNavigate } from "react-router-dom";
+import { SidebarContext } from "./contextAPI";
 export const Rank = () => {
+    const { activeChat, setActiveChat } = useContext(SidebarContext);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
@@ -29,7 +31,7 @@ export const Rank = () => {
         call();
     }, []);
 
-    const handleChatButtonClick = async (userId) => {
+    const handleChatButtonClick = async (userId, username) => {
         var token = document.cookie.substring(6)
         try {
             const response = await fetch("http://localhost:7780/chat/", {
@@ -44,6 +46,8 @@ export const Rank = () => {
                 const chatData = await response.json();
                 // Handle the chat data as needed, such as opening a chat window
                 console.log("Chat data:", chatData);
+                setActiveChat(username)
+                console.log(activeChat)
                 navigate('/chat')
             } else {
                 throw new Error('Failed to access chat');
@@ -79,7 +83,7 @@ export const Rank = () => {
                                     <td className="text-left font-bold text-[#808080]">#{index + 1}</td>
                                     <td className="text-left">{user.point}</td>
                                     <td>
-                               <button style={{fontSize:"14px",fontWeight:"bold"}} onClick={() => handleChatButtonClick(user._id)}>Chat</button>
+                               <button style={{fontSize:"14px",fontWeight:"bold"}} onClick={() => handleChatButtonClick(user._id, user.username)}>Chat</button>
                                   </td>
                                 </tr>
                             ))}

@@ -247,6 +247,7 @@ const EachPost = (props) => {
               </div>
             </div>
           </div>
+          Answers:
           <div className={`${theme === 'dark' ? ' bg-[#262525]' : 'bg-white'} shadow-lg rounded-md w-[100%] p-5 md:p-10 flex flex-col gap-6`}>
             <ul id="list_comment" className="col-md-12">
               {/* Start List Comment 1 */}
